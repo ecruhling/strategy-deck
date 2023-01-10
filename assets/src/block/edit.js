@@ -1,6 +1,10 @@
-import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
+import {
+	InspectorControls,
+	RichText,
+	useBlockProps,
+} from '@wordpress/block-editor';
 import { Panel, PanelBody, PanelRow, TextControl } from '@wordpress/components';
-import { blockIcon, blockStyle } from './index';
+import { blockStyle } from './index';
 
 export const Edit = ( { isSelected, style, attributes, setAttributes } ) => {
 	return (
@@ -18,32 +22,28 @@ export const Edit = ( { isSelected, style, attributes, setAttributes } ) => {
 					>
 						<PanelRow>
 							<TextControl
-								label="Link Href"
+								label="Test"
 								type={ 'url' }
-								value={ attributes.href }
-								onChange={ ( target ) =>
-									setAttributes( { href: target } )
-								}
+								// value={ attributes.href }
+								// onChange={ ( target ) =>
+								// 	setAttributes( { href: target } )
+								// }
 							/>
 						</PanelRow>
 					</PanelBody>
 				</Panel>
 			</InspectorControls>
-			{ blockIcon }
-			<h4
+			<RichText
+				tagName="p"
+				value={ attributes.word }
+				onChange={ ( word ) => setAttributes( { word } ) }
+				placeholder={ 'Word' }
 				style={
 					isSelected
 						? { border: '2px solid red' }
 						: { border: 'none' }
 				}
-			>
-				<a href={ attributes.href } className={ 'has-link-color' }>
-					Hello World, WordPress Plugin Boilerplate Powered here!
-				</a>
-			</h4>
-			<p>
-				Edit strategydeck/assets/src/block/index.js to change this block
-			</p>
+			/>
 		</div>
 	);
 };

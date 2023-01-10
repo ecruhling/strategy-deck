@@ -21,11 +21,11 @@
 	"alignWide": false,
 	"className": false,
 	"color": {
-	  "background": false,
+	  "background": true,
 	  "__experimentalDuotone": false,
 	  "gradients": false,
 	  "link": false,
-	  "text": false
+	  "text": true
 	},
 	"customClassName": true,
 	"fullHeight": false,
@@ -41,7 +41,7 @@
 	  "blockGap": false
 	},
 	"typography": {
-	  "fontSize": false,
+	  "fontSize": true,
 	  "lineHeight": false
 	}
   },

@@ -32,9 +32,9 @@ class CMB extends Base {
 	public function initialize() {
 		parent::initialize();
 
-		require_once SD_PLUGIN_ROOT . 'vendor/cmb2/init.php';
-		require_once SD_PLUGIN_ROOT . 'vendor/cmb2-grid/Cmb2GridPluginLoad.php';
-		add_action( 'cmb2_init', array( $this, 'cmb_deck_metaboxes' ) );
+//		require_once SD_PLUGIN_ROOT . 'vendor/cmb2/init.php';
+//		require_once SD_PLUGIN_ROOT . 'vendor/cmb2-grid/Cmb2GridPluginLoad.php';
+//		add_action( 'cmb2_init', array( $this, 'cmb_deck_metaboxes' ) );
 	}
 
 	/**

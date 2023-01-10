@@ -20,27 +20,15 @@ import { Save } from './save';
 registerBlockType( blockConfig.name, {
 	...blockConfig,
 	icon: blockIcon,
-	apiVersion: 2,
 	edit: Edit,
 	save: Save,
-	// https://developer.wordpress.org/block-editor/reference-guides/block-api/block-supports/
-	supports: {
-		align: true,
-		anchor: true,
-		className: true,
-		color: {
-			background: true,
-			link: true,
-			text: true,
-			gradients: true,
-		},
-		spacing: {
-			margin: true, // Enable margin UI control.
-			padding: true, // Enable padding UI control.
-			blockGap: true, // Enables block spacing UI control.
-		},
-	},
 	attributes: {
+		word: {
+			type: 'string',
+			source: 'html',
+			selector: 'p',
+			default: 'Word',
+		},
 		style: {
 			type: 'object',
 			default: {
@@ -58,10 +46,6 @@ registerBlockType( blockConfig.name, {
 					},
 				},
 			},
-		},
-		href: {
-			type: 'string',
-			default: 'https://github.com/WPBP',
 		},
 	},
 } );

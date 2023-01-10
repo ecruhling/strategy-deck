@@ -44,22 +44,25 @@ const Edit = _ref => {
     icon: 'settings',
     initialOpen: true
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
-    label: "Link Href",
-    type: 'url',
-    value: attributes.href,
-    onChange: target => setAttributes({
-      href: target
-    })
-  }))))), _index__WEBPACK_IMPORTED_MODULE_3__.blockIcon, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", {
+    label: "Test",
+    type: 'url'
+    // value={ attributes.href }
+    // onChange={ ( target ) =>
+    // 	setAttributes( { href: target } )
+    // }
+  }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+    tagName: "p",
+    value: attributes.word,
+    onChange: word => setAttributes({
+      word
+    }),
+    placeholder: 'Word',
     style: isSelected ? {
       border: '2px solid red'
     } : {
       border: 'none'
     }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    href: attributes.href,
-    className: 'has-link-color'
-  }, "Hello World, WordPress Plugin Boilerplate Powered here!")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Edit strategydeck/assets/src/block/index.js to change this block"));
+  }));
 };
 
 /***/ }),
@@ -130,30 +133,15 @@ const blockConfig = __webpack_require__(/*! ./block.json */ "./assets/src/block/
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)(blockConfig.name, {
   ...blockConfig,
   icon: blockIcon,
-  apiVersion: 2,
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__.Edit,
   save: _save__WEBPACK_IMPORTED_MODULE_3__.Save,
-  // https://developer.wordpress.org/block-editor/reference-guides/block-api/block-supports/
-  supports: {
-    align: true,
-    anchor: true,
-    className: true,
-    color: {
-      background: true,
-      link: true,
-      text: true,
-      gradients: true
-    },
-    spacing: {
-      margin: true,
-      // Enable margin UI control.
-      padding: true,
-      // Enable padding UI control.
-      blockGap: true // Enables block spacing UI control.
-    }
-  },
-
   attributes: {
+    word: {
+      type: 'string',
+      source: 'html',
+      selector: 'p',
+      default: 'Word'
+    },
     style: {
       type: 'object',
       default: {
@@ -171,10 +159,6 @@ const blockConfig = __webpack_require__(/*! ./block.json */ "./assets/src/block/
           }
         }
       }
-    },
-    href: {
-      type: 'string',
-      default: 'https://github.com/WPBP'
     }
   }
 });
@@ -207,10 +191,9 @@ const Save = _ref => {
     style: {
       ..._index__WEBPACK_IMPORTED_MODULE_2__.blockStyle
     }
-  }), _index__WEBPACK_IMPORTED_MODULE_2__.blockIcon, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    href: attributes.href,
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: 'has-link-color'
-  }, "Hello World, WordPress Plugin Boilerplate Powered here!")));
+  }, "Hello World, WordPress Plugin Boilerplate Powered here!"));
 };
 
 /***/ }),
@@ -273,7 +256,7 @@ module.exports = window["wp"]["element"];
   \*************************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"strategydeck/deck-card","title":"Deck Card","category":"text","description":"A Deck Card used with the Strategy Deck plugin.","keywords":["card","strategy","deck"],"version":"1.0.0","textdomain":"strategydeck","supports":{"jsx":true,"anchor":true,"align":false,"alignContent":false,"alignText":false,"alignWide":false,"className":false,"color":{"background":false,"__experimentalDuotone":false,"gradients":false,"link":false,"text":false},"customClassName":true,"fullHeight":false,"defaultStylePicker":false,"html":true,"inserter":true,"multiple":true,"reusable":true,"lock":true,"spacing":{"margin":false,"padding":false,"blockGap":false},"typography":{"fontSize":false,"lineHeight":false}},"editorScript":"file:../../build/plugin-block.js","editorStyle":"file:../../build/plugin-block.css","style":"file:../../build/plugin-block.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"strategydeck/deck-card","title":"Deck Card","category":"text","description":"A Deck Card used with the Strategy Deck plugin.","keywords":["card","strategy","deck"],"version":"1.0.0","textdomain":"strategydeck","supports":{"jsx":true,"anchor":true,"align":false,"alignContent":false,"alignText":false,"alignWide":false,"className":false,"color":{"background":true,"__experimentalDuotone":false,"gradients":false,"link":false,"text":true},"customClassName":true,"fullHeight":false,"defaultStylePicker":false,"html":true,"inserter":true,"multiple":true,"reusable":true,"lock":true,"spacing":{"margin":false,"padding":false,"blockGap":false},"typography":{"fontSize":true,"lineHeight":false}},"editorScript":"file:../../build/plugin-block.js","editorStyle":"file:../../build/plugin-block.css","style":"file:../../build/plugin-block.css"}');
 
 /***/ })
 
