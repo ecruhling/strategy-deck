@@ -2,7 +2,6 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 2,
   "name": "strategydeck/deck-card",
-  "version": "1.0.0",
   "title": "Deck Card",
   "category": "text",
   "description": "A Deck Card used with the Strategy Deck plugin.",
@@ -11,6 +10,8 @@
 	"strategy",
 	"deck"
   ],
+  "version": "1.0.0",
+  "textdomain": "strategydeck",
   "supports": {
 	"jsx": true,
 	"anchor": true,
