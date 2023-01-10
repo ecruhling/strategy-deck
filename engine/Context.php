@@ -13,6 +13,16 @@
 namespace Strategy_Deck\Engine;
 
 use Inpsyde\WpContext;
+use WP_User;
+use function _doing_it_wrong;
+use function esc_html;
+use function function_exists;
+use function is_amp_endpoint;
+use function is_multisite;
+use function is_null;
+use function sprintf;
+use function user_can;
+use function wp_get_current_user;
 
 /**
  * Strategy Deck Is Methods
@@ -22,9 +32,9 @@ class Context {
 	/**
 	 * WpContext Class
 	 *
-	 * @var object
+	 * @var ?object
 	 */
-	public $context = null;
+	public ?object $context = null;
 
 	/**
 	 * What type of request is this?
@@ -34,7 +44,7 @@ class Context {
 	 * @return bool
 	 * @SuppressWarnings("StaticAccess")
 	 */
-	public function request( string $type ) {
+	public function request( string $type ): bool {
 		$this->context = WpContext::determine();
 
 		switch ( $type ) {
@@ -63,7 +73,7 @@ class Context {
 				return $this->is_amp();
 
 			default:
-				\_doing_it_wrong( __METHOD__, \esc_html( \sprintf( 'Unknown request type: %s', $type ) ), '1.0.0' );
+				_doing_it_wrong( __METHOD__, esc_html( sprintf( 'Unknown request type: %s', $type ) ), '1.0.0' );
 
 				return false;
 		}
@@ -74,26 +84,26 @@ class Context {
 	 *
 	 * @return bool
 	 */
-	public function is_amp() {
-		return \function_exists( 'is_amp_endpoint' ) && \is_amp_endpoint();
+	public function is_amp(): bool {
+		return function_exists( 'is_amp_endpoint' ) && is_amp_endpoint();
 	}
 
 	/**
 	 * Whether given user is an administrator.
 	 *
-	 * @param \WP_User|null $user The given user.
+	 * @param WP_User|null $user The given user.
 	 * @return bool
 	 */
-	public static function is_user_admin( \WP_User $user = null ) { // phpcs:ignore
-		if ( \is_null( $user ) ) {
-			$user = \wp_get_current_user();
+	public static function is_user_admin( WP_User $user = null ): bool { // phpcs:ignore
+		if ( is_null( $user ) ) {
+			$user = wp_get_current_user();
 		}
 
-		if ( ! $user instanceof \WP_User ) {
-			\_doing_it_wrong( __METHOD__, 'To check if the user is admin is required a WP_User object.', '1.0.0' );
+		if ( ! $user instanceof WP_User ) {
+			_doing_it_wrong( __METHOD__, 'To check if the user is admin is required a WP_User object.', '1.0.0' );
 		}
 
-		return \is_multisite() ? \user_can( $user, 'manage_network' ) : \user_can( $user, 'manage_options' ); // phpcs:ignore
+		return is_multisite() ? user_can( $user, 'manage_network' ) : user_can( $user, 'manage_options' ); // phpcs:ignore
 	}
 
 }

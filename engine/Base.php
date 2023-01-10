@@ -12,6 +12,8 @@
 
 namespace Strategy_Deck\Engine;
 
+use function sd_get_settings;
+
 /**
  * Base skeleton of the plugin
  */
@@ -28,7 +30,7 @@ class Base {
 	 * @return bool
 	 */
 	public function initialize() {
-		$this->settings = \sd_get_settings();
+		$this->settings = sd_get_settings();
 
 		return true;
 	}

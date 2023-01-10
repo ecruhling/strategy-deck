@@ -12,7 +12,11 @@
 
 namespace Strategy_Deck\Backend;
 
+use PointerPlus;
 use Strategy_Deck\Engine\Base;
+use function __;
+use function add_filter;
+use function array_merge;
 
 /**
  * All the WP pointers.
@@ -22,14 +26,14 @@ class Pointers extends Base {
 	/**
 	 * Initialize the Pointers.
 	 *
-	 * @since 1.0.0
-	 * @return void|bool
-	 */
+	 * @return void
+	 *@since 1.0.0
+	 	 */
 	public function initialize() {
 		parent::initialize();
 
-		new \PointerPlus( array( 'prefix' => SD_TEXTDOMAIN ) );
-		\add_filter( 'strategydeck-pointerplus_list', array( $this, 'custom_initial_pointers' ), 10, 2 );
+//		new PointerPlus( array( 'prefix' => SD_TEXTDOMAIN ) );
+//		add_filter( 'strategydeck-pointerplus_list', array( $this, 'custom_initial_pointers' ), 10, 2 );
 	}
 
 	/**
@@ -41,14 +45,14 @@ class Pointers extends Base {
 	 * @since 1.0.0
 	 * @return array
 	 */
-	public function custom_initial_pointers( array $pointers, string $prefix ) {
-		return \array_merge(
+	public function custom_initial_pointers( array $pointers, string $prefix ): array {
+		return array_merge(
 			$pointers,
 			array(
 				$prefix . '_contextual_help' => array(
 					'selector'   => '#show-settings-link',
-					'title'      => \__( 'Boilerplate Help', SD_TEXTDOMAIN ),
-					'text'       => \__( 'A pointer for help tab.<br>Go to Posts, Pages or Users for other pointers.', SD_TEXTDOMAIN ),
+					'title'      => __( 'Boilerplate Help', SD_TEXTDOMAIN ),
+					'text'       => __( 'A pointer for help tab.<br>Go to Posts, Pages or Users for other pointers.', SD_TEXTDOMAIN ),
 					'edge'       => 'top',
 					'align'      => 'left',
 					'icon_class' => 'dashicons-welcome-learn-more',

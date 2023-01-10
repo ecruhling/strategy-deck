@@ -1,8 +1,49 @@
 {
+  "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 2,
-  "name": "strategydeck/block-name",
-  "title": "block_name",
+  "name": "strategydeck/deck-card",
+  "version": "1.0.0",
+  "title": "Deck Card",
   "category": "text",
+  "description": "A Deck Card used with the Strategy Deck plugin.",
+  "keywords": [
+	"card",
+	"strategy",
+	"deck"
+  ],
+  "supports": {
+	"jsx": true,
+	"anchor": true,
+	"align": false,
+	"alignContent": false,
+	"alignText": false,
+	"alignWide": false,
+	"className": false,
+	"color": {
+	  "background": false,
+	  "__experimentalDuotone": false,
+	  "gradients": false,
+	  "link": false,
+	  "text": false
+	},
+	"customClassName": true,
+	"fullHeight": false,
+	"defaultStylePicker": false,
+	"html": true,
+	"inserter": true,
+	"multiple": true,
+	"reusable": true,
+	"lock": true,
+	"spacing": {
+	  "margin": false,
+	  "padding": false,
+	  "blockGap": false
+	},
+	"typography": {
+	  "fontSize": false,
+	  "lineHeight": false
+	}
+  },
   "editorScript": "file:../../build/plugin-block.js",
   "editorStyle": "file:../../build/plugin-block.css",
   "style": "file:../../build/plugin-block.css"

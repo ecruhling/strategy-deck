@@ -12,6 +12,7 @@
 namespace Strategy_Deck\Frontend\Extras;
 
 use Strategy_Deck\Engine\Base;
+use function add_filter;
 
 /**
  * Add custom css class to <body>
@@ -21,12 +22,12 @@ class Body_Class extends Base {
 	/**
 	 * Initialize the class.
 	 *
-	 * @return void|bool
+	 * @return void
 	 */
 	public function initialize() {
 		parent::initialize();
 
-		\add_filter( 'body_class', array( self::class, 'add_sd_class' ), 10, 3 );
+		add_filter( 'body_class', array( self::class, 'add_sd_class' ), 10, 3 );
 	}
 
 	/**
@@ -36,7 +37,7 @@ class Body_Class extends Base {
 	 * @since 1.0.0
 	 * @return array
 	 */
-	public static function add_sd_class( array $classes ) {
+	public static function add_sd_class( array $classes ): array {
 		$classes[] = SD_TEXTDOMAIN;
 
 		return $classes;

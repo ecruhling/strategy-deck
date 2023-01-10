@@ -29,7 +29,7 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 const SD_VERSION = '1.0.0';
-const SD_TEXTDOMAIN = 'resource';
+const SD_TEXTDOMAIN = 'strategydeck';
 const SD_NAME = 'Strategy Deck';
 define( 'SD_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
 const SD_PLUGIN_ABSOLUTE = __FILE__;

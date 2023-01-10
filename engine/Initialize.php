@@ -12,7 +12,25 @@
 
 namespace Strategy_Deck\Engine;
 
+use Composer\Autoload\ClassLoader;
+use Exception;
 use Strategy_Deck\Engine;
+use Throwable;
+use function apply_filters;
+use function array_diff;
+use function array_keys;
+use function do_action;
+use function esc_html__;
+use function is_array;
+use function is_dir;
+use function is_file;
+use function method_exists;
+use function scandir;
+use function strncmp;
+use function strtolower;
+use function substr;
+use function substr_count;
+use function wp_die;
 
 /**
  * Strategy_Deck Initializer
@@ -24,7 +42,7 @@ class Initialize {
 	 *
 	 * @var array
 	 */
-	public $classes = array();
+	public array $classes = array();
 
 	/**
 	 * Instance of this Context.
@@ -36,17 +54,19 @@ class Initialize {
 	/**
 	 * Composer autoload file list.
 	 *
-	 * @var \Composer\Autoload\ClassLoader
+	 * @var ClassLoader
 	 */
-	private $composer;
+	private ClassLoader $composer;
 
 	/**
 	 * The Constructor that load the entry classes
 	 *
-	 * @param \Composer\Autoload\ClassLoader $composer Composer autoload output.
+	 * @param ClassLoader $composer Composer autoload output.
+	 *
+	 * @throws Exception
 	 * @since 1.0.0
 	 */
-	public function __construct( \Composer\Autoload\ClassLoader $composer ) {
+	public function __construct( ClassLoader $composer ) {
 		$this->content  = new Engine\Context;
 		$this->composer = $composer;
 
@@ -80,25 +100,26 @@ class Initialize {
 	/**
 	 * Initialize all the classes.
 	 *
+	 * @return void
+	 * @throws Exception
 	 * @since 1.0.0
 	 * @SuppressWarnings("MissingImport")
-	 * @return void
 	 */
 	private function load_classes() {
-		$this->classes = \apply_filters( 'strategydeck_classes_to_execute', $this->classes );
+		$this->classes = apply_filters( 'strategydeck_classes_to_execute', $this->classes );
 
 		foreach ( $this->classes as $class ) {
 			try {
 				$temp = new $class;
 
-				if ( \method_exists( $temp, 'initialize' ) ) {
+				if ( method_exists( $temp, 'initialize' ) ) {
 					$temp->initialize();
 				}
-			} catch ( \Throwable $err ) {
-				\do_action( 'strategydeck_initialize_failed', $err );
+			} catch ( Throwable $err ) {
+				do_action( 'strategydeck_initialize_failed', $err );
 
 				if ( WP_DEBUG ) {
-					throw new \Exception( $err->getMessage() );
+					throw new Exception( $err->getMessage() );
 				}
 			}
 		}
@@ -108,27 +129,28 @@ class Initialize {
 	 * Based on the folder loads the classes automatically using the Composer autoload to detect the classes of a Namespace.
 	 *
 	 * @param string $namespace Class name to find.
+	 *
+	 * @return void Return the classes.
 	 * @since 1.0.0
-	 * @return array Return the classes.
 	 */
-	private function get_classes( string $namespace ) {
+	private function get_classes( string $namespace ): void {
 		$prefix    = $this->composer->getPrefixesPsr4();
 		$classmap  = $this->composer->getClassMap();
 		$namespace = 'Strategy_Deck\\' . $namespace;
 
 		// In case composer has autoload optimized
 		if ( isset( $classmap[ 'Strategy_Deck\\Engine\\Initialize' ] ) ) {
-			$classes = \array_keys( $classmap );
+			$classes = array_keys( $classmap );
 
 			foreach ( $classes as $class ) {
-				if ( 0 !== \strncmp( (string) $class, $namespace, \strlen( $namespace ) ) ) {
+				if ( 0 !== strncmp( (string) $class, $namespace, \strlen( $namespace ) ) ) {
 					continue;
 				}
 
 				$this->classes[] = $class;
 			}
 
-			return $this->classes;
+			return;
 		}
 
 		$namespace .= '\\';
@@ -140,13 +162,10 @@ class Initialize {
 			$this->find_classes( $php_files, $folder, $namespace );
 
 			if ( !WP_DEBUG ) {
-				\wp_die( \esc_html__( 'Strategy Deck is on production environment with missing `composer dumpautoload -o` that will improve the performance on autoloading itself.', SD_TEXTDOMAIN ) );
+				wp_die( esc_html__( 'Strategy Deck is on production environment with missing `composer dumpautoload -o` that will improve the performance on autoloading itself.', SD_TEXTDOMAIN ) );
 			}
-
-			return $this->classes;
 		}
 
-		return $this->classes;
 	}
 
 	/**
@@ -157,15 +176,15 @@ class Initialize {
 	 * @since 1.0.0
 	 * @return array List of files.
 	 */
-	private function scandir( string $folder ) {
-		$temp_files = \scandir( $folder );
+	private function scandir( string $folder ): array {
+		$temp_files = scandir( $folder );
 			$files  = array();
 
-		if ( \is_array( $temp_files ) ) {
+		if ( is_array( $temp_files ) ) {
 			$files = $temp_files;
 		}
 
-		return \array_diff( $files, array( '..', '.', 'index.php' ) );
+		return array_diff( $files, array( '..', '.', 'index.php' ) );
 	}
 
 	/**
@@ -179,21 +198,21 @@ class Initialize {
 	 */
 	private function find_classes( array $php_files, string $folder, string $base ) {
 		foreach ( $php_files as $php_file ) {
-			$class_name = \substr( $php_file, 0, -4 );
+			$class_name = substr( $php_file, 0, -4 );
 			$path       = $folder . '/' . $php_file;
 
-			if ( \is_file( $path ) ) {
+			if ( is_file( $path ) ) {
 				$this->classes[] = $base . $class_name;
 
 				continue;
 			}
 
 			// Verify the Namespace level
-			if ( \substr_count( $base . $class_name, '\\' ) < 2 ) {
+			if ( substr_count( $base . $class_name, '\\' ) < 2 ) {
 				continue;
 			}
 
-			if ( !\is_dir( $path ) || \strtolower( $php_file ) === $php_file ) {
+			if ( ! is_dir( $path ) || strtolower( $php_file ) === $php_file ) {
 				continue;
 			}
 
