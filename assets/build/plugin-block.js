@@ -44,12 +44,12 @@ const Edit = _ref => {
     icon: 'settings',
     initialOpen: true
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
-    label: "Test",
-    type: 'url'
-    // value={ attributes.href }
-    // onChange={ ( target ) =>
-    // 	setAttributes( { href: target } )
-    // }
+    label: "Columns",
+    type: 'integer',
+    value: attributes.columns,
+    onChange: columns => setAttributes({
+      columns
+    })
   }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "p",
     value: attributes.word,
@@ -58,7 +58,7 @@ const Edit = _ref => {
     }),
     placeholder: 'Word',
     style: isSelected ? {
-      border: '2px solid red'
+      border: '1px dashed black'
     } : {
       border: 'none'
     }
@@ -146,17 +146,8 @@ const blockConfig = __webpack_require__(/*! ./block.json */ "./assets/src/block/
       type: 'object',
       default: {
         color: {
-          background: '#333333',
-          text: '#ffffff',
-          link: '#00A0D2'
-        },
-        spacing: {
-          padding: {
-            top: '32px',
-            left: '32px',
-            bottom: '32px',
-            right: '32px'
-          }
+          background: '#fff9f1',
+          text: '#b1a57e'
         }
       }
     }
@@ -190,10 +181,12 @@ const Save = _ref => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
     style: {
       ..._index__WEBPACK_IMPORTED_MODULE_2__.blockStyle
-    }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: 'has-link-color'
-  }, "Hello World, WordPress Plugin Boilerplate Powered here!"));
+    },
+    className: 'wp-block-strategydeck-deck-card'
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    tagName: "p",
+    value: attributes.word
+  }));
 };
 
 /***/ }),

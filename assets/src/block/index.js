@@ -33,17 +33,8 @@ registerBlockType( blockConfig.name, {
 			type: 'object',
 			default: {
 				color: {
-					background: '#333333',
-					text: '#ffffff',
-					link: '#00A0D2',
-				},
-				spacing: {
-					padding: {
-						top: '32px',
-						left: '32px',
-						bottom: '32px',
-						right: '32px',
-					},
+					background: '#fff9f1',
+					text: '#b1a57e',
 				},
 			},
 		},

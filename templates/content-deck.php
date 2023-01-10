@@ -21,7 +21,7 @@
 	</div>
 	<div class="row flex-1-1-100">
 		<div class="col-md-6">
-			<a class="logo-resource d-block" href="/">
+			<a class="logo-resource--strategy-deck d-block" href="/">
 				<span class="visually-hidden">
 					Resource
 				</span>

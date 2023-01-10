@@ -6,8 +6,4 @@
   --my-plugin_color-primary: #00A0D2;
 }
 
-#dashboard_right_now a.demo-count:before {
-  content: "\f115";
-}
-
 /*# sourceMappingURL=plugin-admin.css.map*/

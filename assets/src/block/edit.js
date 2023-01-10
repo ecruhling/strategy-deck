@@ -22,12 +22,12 @@ export const Edit = ( { isSelected, style, attributes, setAttributes } ) => {
 					>
 						<PanelRow>
 							<TextControl
-								label="Test"
-								type={ 'url' }
-								// value={ attributes.href }
-								// onChange={ ( target ) =>
-								// 	setAttributes( { href: target } )
-								// }
+								label="Columns"
+								type={ 'integer' }
+								value={ attributes.columns }
+								onChange={ ( columns ) =>
+									setAttributes( { columns } )
+								}
 							/>
 						</PanelRow>
 					</PanelBody>
@@ -40,7 +40,7 @@ export const Edit = ( { isSelected, style, attributes, setAttributes } ) => {
 				placeholder={ 'Word' }
 				style={
 					isSelected
-						? { border: '2px solid red' }
+						? { border: '1px dashed black' }
 						: { border: 'none' }
 				}
 			/>
