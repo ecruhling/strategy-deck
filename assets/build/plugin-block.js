@@ -30,7 +30,9 @@ const Edit = _ref => {
     attributes,
     setAttributes
   } = _ref;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: 'deck-card-container'
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
     style: {
       ..._index__WEBPACK_IMPORTED_MODULE_3__.blockStyle,
       style
@@ -62,7 +64,7 @@ const Edit = _ref => {
     } : {
       border: 'none'
     }
-  }));
+  })));
 };
 
 /***/ }),
@@ -178,15 +180,21 @@ const Save = _ref => {
   let {
     attributes
   } = _ref;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: 'deck-card-container'
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
     style: {
       ..._index__WEBPACK_IMPORTED_MODULE_2__.blockStyle
     },
     className: 'wp-block-strategydeck-deck-card'
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
-    tagName: "p",
+    className: "form-check-label",
+    tagName: "label",
     value: attributes.word
-  }));
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    value: "",
+    type: "checkbox"
+  })));
 };
 
 /***/ }),
