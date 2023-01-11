@@ -14,7 +14,7 @@
   "textdomain": "strategydeck",
   "supports": {
 	"jsx": true,
-	"anchor": true,
+	"anchor": false,
 	"align": false,
 	"alignContent": false,
 	"alignText": false,

@@ -3,7 +3,10 @@ import { blockStyle } from './index';
 
 export const Save = ( { attributes } ) => {
 	return (
-		<div className={ 'deck-card-container' }>
+		<div
+			className={ 'deck-card-container' }
+			id={ `deck-card-${ attributes.blockId }` }
+		>
 			<div
 				{ ...useBlockProps.save( {
 					style: { ...blockStyle },
@@ -13,9 +16,14 @@ export const Save = ( { attributes } ) => {
 				<RichText.Content
 					className="form-check-label"
 					tagName="label"
+					htmlFor={ `deck-card-${ attributes.blockId }-input` }
 					value={ attributes.word }
 				/>
-				<input value="" type="checkbox" />
+				<input
+					id={ `deck-card-${ attributes.blockId }-input` }
+					value=""
+					type="checkbox"
+				/>
 			</div>
 		</div>
 	);

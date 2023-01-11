@@ -25,40 +25,29 @@ __webpack_require__.r(__webpack_exports__);
 
 const Edit = _ref => {
   let {
+    clientId,
     isSelected,
     style,
     attributes,
     setAttributes
   } = _ref;
+  setAttributes({
+    blockId: clientId
+  });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: 'deck-card-container'
+    className: 'deck-card-container',
+    id: `deck-card-${attributes.blockId}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
     style: {
       ..._index__WEBPACK_IMPORTED_MODULE_3__.blockStyle,
       style
     }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
-    key: "setting"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Panel, {
-    header: "Settings"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
-    title: "Block Settings",
-    icon: 'settings',
-    initialOpen: true
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
-    label: "Columns",
-    type: 'integer',
-    value: attributes.columns,
-    onChange: columns => setAttributes({
-      columns
-    })
-  }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-    tagName: "p",
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+    tagName: "label",
     value: attributes.word,
     onChange: word => setAttributes({
       word
     }),
-    placeholder: 'Word',
     style: isSelected ? {
       border: '1px dashed black'
     } : {
@@ -138,10 +127,13 @@ const blockConfig = __webpack_require__(/*! ./block.json */ "./assets/src/block/
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__.Edit,
   save: _save__WEBPACK_IMPORTED_MODULE_3__.Save,
   attributes: {
+    blockId: {
+      type: 'string'
+    },
     word: {
       type: 'string',
       source: 'html',
-      selector: 'p',
+      selector: 'label',
       default: 'Word'
     },
     style: {
@@ -181,7 +173,8 @@ const Save = _ref => {
     attributes
   } = _ref;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: 'deck-card-container'
+    className: 'deck-card-container',
+    id: `deck-card-${attributes.blockId}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
     style: {
       ..._index__WEBPACK_IMPORTED_MODULE_2__.blockStyle
@@ -190,8 +183,10 @@ const Save = _ref => {
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     className: "form-check-label",
     tagName: "label",
+    htmlFor: `deck-card-${attributes.blockId}-input`,
     value: attributes.word
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    id: `deck-card-${attributes.blockId}-input`,
     value: "",
     type: "checkbox"
   })));
@@ -257,7 +252,7 @@ module.exports = window["wp"]["element"];
   \*************************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"strategydeck/deck-card","title":"Deck Card","category":"text","description":"A Deck Card used with the Strategy Deck plugin.","keywords":["card","strategy","deck"],"version":"1.0.0","textdomain":"strategydeck","supports":{"jsx":true,"anchor":true,"align":false,"alignContent":false,"alignText":false,"alignWide":false,"className":false,"color":{"background":true,"__experimentalDuotone":false,"gradients":false,"link":false,"text":true},"customClassName":true,"fullHeight":false,"defaultStylePicker":false,"html":true,"inserter":true,"multiple":true,"reusable":true,"lock":true,"spacing":{"margin":false,"padding":false,"blockGap":false},"typography":{"fontSize":true,"lineHeight":false}},"editorScript":"file:../../build/plugin-block.js","editorStyle":"file:../../build/plugin-block.css","style":"file:../../build/plugin-block.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"strategydeck/deck-card","title":"Deck Card","category":"text","description":"A Deck Card used with the Strategy Deck plugin.","keywords":["card","strategy","deck"],"version":"1.0.0","textdomain":"strategydeck","supports":{"jsx":true,"anchor":false,"align":false,"alignContent":false,"alignText":false,"alignWide":false,"className":false,"color":{"background":true,"__experimentalDuotone":false,"gradients":false,"link":false,"text":true},"customClassName":true,"fullHeight":false,"defaultStylePicker":false,"html":true,"inserter":true,"multiple":true,"reusable":true,"lock":true,"spacing":{"margin":false,"padding":false,"blockGap":false},"typography":{"fontSize":true,"lineHeight":false}},"editorScript":"file:../../build/plugin-block.js","editorStyle":"file:../../build/plugin-block.css","style":"file:../../build/plugin-block.css"}');
 
 /***/ })
 

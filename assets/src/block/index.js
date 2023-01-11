@@ -23,10 +23,13 @@ registerBlockType( blockConfig.name, {
 	edit: Edit,
 	save: Save,
 	attributes: {
+		blockId: {
+			type: 'string',
+		},
 		word: {
 			type: 'string',
 			source: 'html',
-			selector: 'p',
+			selector: 'label',
 			default: 'Word',
 		},
 		style: {

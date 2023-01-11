@@ -6,39 +6,29 @@ import {
 import { Panel, PanelBody, PanelRow, TextControl } from '@wordpress/components';
 import { blockStyle } from './index';
 
-export const Edit = ( { isSelected, style, attributes, setAttributes } ) => {
+export const Edit = ( {
+	clientId,
+	isSelected,
+	style,
+	attributes,
+	setAttributes,
+} ) => {
+	setAttributes( { blockId: clientId } );
+
 	return (
-		<div className={ 'deck-card-container' }>
+		<div
+			className={ 'deck-card-container' }
+			id={ `deck-card-${ attributes.blockId }` }
+		>
 			<div
 				{ ...useBlockProps( {
 					style: { ...blockStyle, style },
 				} ) }
 			>
-				<InspectorControls key="setting">
-					<Panel header="Settings">
-						<PanelBody
-							title="Block Settings"
-							icon={ 'settings' }
-							initialOpen={ true }
-						>
-							<PanelRow>
-								<TextControl
-									label="Columns"
-									type={ 'integer' }
-									value={ attributes.columns }
-									onChange={ ( columns ) =>
-										setAttributes( { columns } )
-									}
-								/>
-							</PanelRow>
-						</PanelBody>
-					</Panel>
-				</InspectorControls>
 				<RichText
-					tagName="p"
+					tagName="label"
 					value={ attributes.word }
 					onChange={ ( word ) => setAttributes( { word } ) }
-					placeholder={ 'Word' }
 					style={
 						isSelected
 							? { border: '1px dashed black' }
