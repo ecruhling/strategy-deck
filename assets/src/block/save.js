@@ -21,6 +21,7 @@ export const Save = ( { attributes } ) => {
 				/>
 				<input
 					id={ `deck-card-${ attributes.blockId }-input` }
+					name={ `deck-card-${ attributes.blockId }-input` }
 					value=""
 					type="checkbox"
 				/>

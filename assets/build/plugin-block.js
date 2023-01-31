@@ -187,6 +187,7 @@ const Save = _ref => {
     value: attributes.word
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     id: `deck-card-${attributes.blockId}-input`,
+    name: `deck-card-${attributes.blockId}-input`,
     value: "",
     type: "checkbox"
   })));

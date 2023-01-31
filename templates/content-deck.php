@@ -16,6 +16,7 @@
 	</div>
 	<form class="row d-flex px-0 flex-1-1-100 mx-0 justify-content-center align-items-center form-check">
 		<?php the_content(); ?>
+		<button type="submit">Submit</button>
 	</form>
 	<div class="row flex-1-1-100">
 		<div class="col-md-6">
