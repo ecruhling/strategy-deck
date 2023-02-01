@@ -31,13 +31,13 @@
     },
     "devDependencies": {
         "@babel/core": "^7.20.12",
-        "@wordpress/babel-preset-default": "^7.8.0",
-        "@wordpress/block-editor": "^11.1.0",
-        "@wordpress/blocks": "^12.1.0",
-        "@wordpress/browserslist-config": "^5.7.0",
-        "@wordpress/components": "^23.1.0",
-        "@wordpress/eslint-plugin": "^13.8.0",
-        "@wordpress/scripts": "^25.1.0"
+        "@wordpress/babel-preset-default": "^7.10.0",
+        "@wordpress/block-editor": "^11.3.0",
+        "@wordpress/blocks": "^12.3.0",
+        "@wordpress/browserslist-config": "^5.9.0",
+        "@wordpress/components": "^23.3.0",
+        "@wordpress/eslint-plugin": "^13.10.0",
+        "@wordpress/scripts": "^25.3.0"
     },
     "engines": {
         "node": ">=14.0.0",
