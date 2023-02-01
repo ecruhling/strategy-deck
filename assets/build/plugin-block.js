@@ -128,7 +128,8 @@ const blockConfig = __webpack_require__(/*! ./block.json */ "./assets/src/block/
   save: _save__WEBPACK_IMPORTED_MODULE_3__.Save,
   attributes: {
     blockId: {
-      type: 'string'
+      type: 'string',
+      default: ''
     },
     word: {
       type: 'string',

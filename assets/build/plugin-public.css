@@ -33,6 +33,18 @@
   font-size: 0.875rem;
 }
 
+#deck-reset {
+  -webkit-appearance: none;
+          appearance: none;
+  border: none;
+  background: transparent;
+  color: #fff9f1;
+}
+
+#deck-form {
+  max-width: 1315px;
+}
+
 article.deck {
   height: 100vh;
 }

@@ -25,6 +25,7 @@ registerBlockType( blockConfig.name, {
 	attributes: {
 		blockId: {
 			type: 'string',
+			default: '',
 		},
 		word: {
 			type: 'string',

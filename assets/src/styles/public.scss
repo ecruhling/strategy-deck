@@ -31,6 +31,17 @@
   }
 }
 
+#deck-reset {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: #fff9f1;
+}
+
+#deck-form {
+  max-width: 1315px;
+}
+
 // selects the entire deck single post view
 article.deck {
   height: 100vh;
