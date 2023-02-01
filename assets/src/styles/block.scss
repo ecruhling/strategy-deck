@@ -38,6 +38,7 @@ body.post-type-deck {
 
 // Actual block
 .wp-block-strategydeck-deck-card {
+  transition: all 0.5s ease-in-out;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,7 +48,12 @@ body.post-type-deck {
   max-height: 115px;
   position: relative;
 
+  label {
+	//transition: all 0.2s ease-in-out;
+  }
+
   input {
+	//transition: all 0.2s ease-in-out;
 	appearance: none;
 	border: none;
 	position: absolute;
@@ -60,5 +66,10 @@ body.post-type-deck {
 	&:hover {
 	  cursor: pointer;
 	}
+  }
+
+  &:hover {
+	border: solid 1px #3e5e6f;
+	color: #3e5e6f !important;
   }
 }

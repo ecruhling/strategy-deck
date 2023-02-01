@@ -6,7 +6,7 @@ Tested up to: 5.3
 Stable tag: 1.0.0
 Requires PHP: 7.0
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+A WordPress plugin for creating a custom post type 'deck' that is used in the client discovery process.
 
 == Description ==
 
@@ -38,34 +38,6 @@ that lacks those changes -- as long as the trunk's `readme.txt` points to the co
 
     If no stable tag is provided, it is assumed that trunk is stable, but you should specify "trunk" if that's where
 you put the stable version, in order to eliminate any doubt.
-
-== Installation ==
-
-This section describes how to install the plugin and get it working.
-
-e.g.
-
-= Using The WordPress Dashboard =
-
-1. Navigate to the 'Add New' in the plugins dashboard
-2. Search for 'strategydeck'
-3. Click 'Install Now'
-4. Activate the plugin on the Plugin dashboard
-
-= Uploading in WordPress Dashboard =
-
-1. Navigate to the 'Add New' in the plugins dashboard
-2. Navigate to the 'Upload' area
-3. Select `strategydeck.zip` from your computer
-4. Click 'Install Now'
-5. Activate the plugin in the Plugin dashboard
-
-= Using FTP =
-
-1. Download `strategydeck.zip`
-2. Extract the `strategydeck` directory to your computer
-3. Upload the `strategydeck` directory to the `/wp-content/plugins/` directory
-4. Activate the plugin in the Plugin dashboard
 
 == Frequently Asked Questions ==
 

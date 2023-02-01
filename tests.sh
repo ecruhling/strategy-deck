@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Do you want to execute a specific test suites? this script accept as first paramete the suite name!
+# Do you want to execute a specific test suites? this script accept as first parameter the suite name!
 
 if ! lsof -Pi :4444 -sTCP:LISTEN -t >/dev/null; then
 	echo " - Run Chromedriver"
