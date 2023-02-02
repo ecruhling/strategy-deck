@@ -6,23 +6,22 @@ import { blockStyle } from './index';
 export const Edit = ( {
 	clientId,
 	isSelected,
-	attributes: { blockId, word, style },
+	attributes: { id, word, style },
 	setAttributes,
 } ) => {
-	// useEffect sets the blockId once and only once.
+	// useEffect sets the id once and only once.
 	useEffect( () => {
-		if ( 0 === blockId.length ) {
+		// if id has not been created, create and set it
+		// this ensures it is set only once, at block creation
+		if ( id.length === 0 ) {
 			setAttributes( {
-				blockId: clientId,
+				id: clientId,
 			} );
 		}
 	}, [] );
 
 	return (
-		<div
-			className={ 'deck-card-container' }
-			id={ `deck-card-${ blockId }` }
-		>
+		<div className={ 'deck-card-container' } id={ `deck-card-${ id }` }>
 			<div
 				{ ...useBlockProps( {
 					style: { ...blockStyle, style },

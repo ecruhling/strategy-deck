@@ -13,7 +13,7 @@ export const blockStyle = {
 const blockConfig = require( './block.json' );
 
 import { Edit } from './edit';
-import { Save } from './save';
+// import { Save } from './save';
 
 // Register the block
 /// https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
@@ -21,26 +21,6 @@ registerBlockType( blockConfig.name, {
 	...blockConfig,
 	icon: blockIcon,
 	edit: Edit,
-	save: Save,
-	attributes: {
-		blockId: {
-			type: 'string',
-			default: '',
-		},
-		word: {
-			type: 'string',
-			source: 'html',
-			selector: 'label',
-			default: 'Word',
-		},
-		style: {
-			type: 'object',
-			default: {
-				color: {
-					background: '#fff9f1',
-					text: '#b1a57e',
-				},
-			},
-		},
-	},
+	// save: Save,
+	save: () => null,
 } );

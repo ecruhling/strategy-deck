@@ -26,23 +26,25 @@ const Edit = _ref => {
     clientId,
     isSelected,
     attributes: {
-      blockId,
+      id,
       word,
       style
     },
     setAttributes
   } = _ref;
-  // useEffect sets the blockId once and only once.
+  // useEffect sets the id once and only once.
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (0 === blockId.length) {
+    // if id has not been created, create and set it
+    // this ensures it is set only once, at block creation
+    if (id.length === 0) {
       setAttributes({
-        blockId: clientId
+        id: clientId
       });
     }
   }, []);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'deck-card-container',
-    id: `deck-card-${blockId}`
+    id: `deck-card-${id}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
     style: {
       ..._index__WEBPACK_IMPORTED_MODULE_2__.blockStyle,
@@ -80,7 +82,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./assets/src/block/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./assets/src/block/save.js");
 
 /**
  * WordPress dependencies
@@ -123,7 +124,7 @@ const blockStyle = {
 // The block configuration
 const blockConfig = __webpack_require__(/*! ./block.json */ "./assets/src/block/block.json");
 
-
+// import { Save } from './save';
 
 // Register the block
 /// https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
@@ -131,74 +132,9 @@ const blockConfig = __webpack_require__(/*! ./block.json */ "./assets/src/block/
   ...blockConfig,
   icon: blockIcon,
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__.Edit,
-  save: _save__WEBPACK_IMPORTED_MODULE_3__.Save,
-  attributes: {
-    blockId: {
-      type: 'string',
-      default: ''
-    },
-    word: {
-      type: 'string',
-      source: 'html',
-      selector: 'label',
-      default: 'Word'
-    },
-    style: {
-      type: 'object',
-      default: {
-        color: {
-          background: '#fff9f1',
-          text: '#b1a57e'
-        }
-      }
-    }
-  }
+  // save: Save,
+  save: () => null
 });
-
-/***/ }),
-
-/***/ "./assets/src/block/save.js":
-/*!**********************************!*\
-  !*** ./assets/src/block/save.js ***!
-  \**********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Save": () => (/* binding */ Save)
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index */ "./assets/src/block/index.js");
-
-
-
-const Save = _ref => {
-  let {
-    attributes
-  } = _ref;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: 'deck-card-container',
-    id: `deck-card-${attributes.blockId}`
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
-    style: {
-      ..._index__WEBPACK_IMPORTED_MODULE_2__.blockStyle
-    },
-    className: 'wp-block-strategydeck-deck-card'
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
-    className: "form-check-label",
-    tagName: "label",
-    htmlFor: `deck-card-${attributes.blockId}-input`,
-    value: attributes.word
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    id: `deck-card-${attributes.blockId}-input`,
-    name: `deck-card-${attributes.blockId}-input`,
-    value: "",
-    type: "checkbox"
-  })));
-};
 
 /***/ }),
 
@@ -250,7 +186,7 @@ module.exports = window["wp"]["element"];
   \*************************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"strategydeck/deck-card","title":"Deck Card","category":"text","description":"A Deck Card used with the Strategy Deck plugin.","keywords":["card","strategy","deck"],"version":"1.0.0","textdomain":"strategydeck","supports":{"jsx":true,"anchor":false,"align":false,"alignContent":false,"alignText":false,"alignWide":false,"className":false,"color":{"background":true,"__experimentalDuotone":false,"gradients":false,"link":false,"text":true},"customClassName":true,"fullHeight":false,"defaultStylePicker":false,"html":true,"inserter":true,"multiple":true,"reusable":true,"lock":true,"spacing":{"margin":false,"padding":false,"blockGap":false},"typography":{"fontSize":true,"lineHeight":false}},"editorScript":"file:../../build/plugin-block.js","editorStyle":"file:../../build/plugin-block.css","style":"file:../../build/plugin-block.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"strategydeck/deck-card","title":"Deck Card","category":"text","description":"A Deck Card used with the Strategy Deck plugin.","keywords":["card","strategy","deck"],"version":"1.0.0","textdomain":"strategydeck","attributes":{"id":{"type":"string","default":""},"word":{"type":"string","default":"Word"},"style":{"type":"object","default":{"color":{"background":"#fff9f1","text":"#b1a57e"}}}},"supports":{"jsx":true,"anchor":false,"align":false,"alignContent":false,"alignText":false,"alignWide":false,"className":false,"color":{"background":true,"__experimentalDuotone":false,"gradients":false,"link":false,"text":true},"customClassName":true,"fullHeight":false,"defaultStylePicker":false,"html":true,"inserter":true,"multiple":true,"reusable":true,"lock":true,"spacing":{"margin":false,"padding":false,"blockGap":false},"typography":{"fontSize":true,"lineHeight":false}},"editorScript":"file:../../build/plugin-block.js","editorStyle":"file:../../build/plugin-block.css","style":"file:../../build/plugin-block.css","render":"file:./render-block.php"}');
 
 /***/ })
 
