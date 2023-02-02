@@ -1,24 +1,27 @@
-import {
-	InspectorControls,
-	RichText,
-	useBlockProps,
-} from '@wordpress/block-editor';
-import { Panel, PanelBody, PanelRow, TextControl } from '@wordpress/components';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
+import { useEffect } from '@wordpress/element';
+
 import { blockStyle } from './index';
 
 export const Edit = ( {
 	clientId,
 	isSelected,
-	style,
-	attributes,
+	attributes: { blockId, word, style },
 	setAttributes,
 } ) => {
-	setAttributes( { blockId: clientId } );
+	// useEffect sets the blockId once and only once.
+	useEffect( () => {
+		if ( 0 === blockId.length ) {
+			setAttributes( {
+				blockId: clientId,
+			} );
+		}
+	}, [] );
 
 	return (
 		<div
 			className={ 'deck-card-container' }
-			id={ `deck-card-${ attributes.blockId }` }
+			id={ `deck-card-${ blockId }` }
 		>
 			<div
 				{ ...useBlockProps( {
@@ -27,8 +30,8 @@ export const Edit = ( {
 			>
 				<RichText
 					tagName="label"
-					value={ attributes.word }
-					onChange={ ( word ) => setAttributes( { word } ) }
+					value={ word }
+					onChange={ ( value ) => setAttributes( { word: value } ) }
 					style={
 						isSelected
 							? { border: '1px dashed black' }
