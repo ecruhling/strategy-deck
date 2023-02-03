@@ -6,8 +6,8 @@ const deckCardClass = '.wp-block-strategydeck-deck-card',
 
 deckCards.forEach( ( deckCard ) => {
 	const attributes = {
-		block_id: deckCard.dataset.id,
-		post_id: parseInt( deckCard.dataset.post_id, 10 ),
+		id: deckCard.id,
+		style: deckCard.style,
 	};
 
 	render( <FrontendDeckCard dataAttributes={ attributes } />, deckCard );

@@ -6,7 +6,8 @@ const FrontendDeckCard = ( props ) => {
 	const { dataAttributes } = props;
 
 	const [ attributes, setAttributes ] = useState( {
-		block_id: 0,
+		id: 0,
+		style: '',
 	} );
 
 	useEffect( () => {
@@ -16,28 +17,11 @@ const FrontendDeckCard = ( props ) => {
 	}, [] );
 
 	return (
-		<div
-			className={ 'deck-card-container' }
-			id={ `deck-card-${ attributes.blockId }` }
-		>
-			<div
-				{ ...useBlockProps.save( {
-					style: { ...blockStyle },
-					className: 'wp-block-strategydeck-deck-card',
-				} ) }
-			>
-				<RichText.Content
-					className="form-check-label"
-					tagName="label"
-					htmlFor={ `deck-card-${ attributes.blockId }-input` }
-					value={ attributes.word }
-				/>
-				<input
-					id={ `deck-card-${ attributes.blockId }-input` }
-					name={ `deck-card-${ attributes.blockId }-input` }
-					value=""
-					type="checkbox"
-				/>
+		<div className="deck-card-container" id={ attributes.id }>
+			<div style={ attributes.style }>
+				{ /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
+				<label className="form-check-label" htmlFor="-input"></label>
+				<input id="-input" name="-input" value="" type="checkbox" />
 			</div>
 		</div>
 	);
