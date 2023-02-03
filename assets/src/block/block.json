@@ -65,6 +65,7 @@
 	}
   },
   "editorScript": "file:../../build/plugin-block.js",
+  "viewScript": "file:../../build/plugin-view.js",
   "editorStyle": "file:../../build/plugin-block.css",
   "style": "file:../../build/plugin-block.css",
   "render": "file:./render-block.php"

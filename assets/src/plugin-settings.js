@@ -1,10 +1,10 @@
-import "./styles/settings.scss";
-import $ from "jquery";
+import './styles/settings.scss';
+import $ from 'jquery';
 
 ( ( $ ) => {
-	"use strict";
+	'use strict';
 	$( () => {
-		$( "#tabs" ).tabs();
+		$( '#tabs' ).tabs();
 	} );
 	// Place your administration-specific JavaScript here
 } )( jQuery );
