@@ -18,7 +18,12 @@ const FrontendDeckCard = ( props ) => {
 
 	return (
 		<div className="deck-card-container" id={ attributes.id }>
-			<div style={ attributes.style }>
+			<div
+				style={ {
+					color: attributes.style.color,
+					backgroundColor: attributes.style.backgroundColor,
+				} }
+			>
 				{ /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
 				<label className="form-check-label" htmlFor="-input"></label>
 				<input id="-input" name="-input" value="" type="checkbox" />
