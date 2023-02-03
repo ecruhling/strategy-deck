@@ -21,23 +21,22 @@ export const Edit = ( {
 	}, [] );
 
 	return (
-		<div className={ 'deck-card-container' } id={ `deck-card-${ id }` }>
-			<div
-				{ ...useBlockProps( {
-					style: { ...blockStyle, style },
-				} ) }
-			>
-				<RichText
-					tagName="label"
-					value={ word }
-					onChange={ ( value ) => setAttributes( { word: value } ) }
-					style={
-						isSelected
-							? { border: '1px dashed black' }
-							: { border: 'none' }
-					}
-				/>
-			</div>
+		<div
+			{ ...useBlockProps( {
+				style: { ...blockStyle, style },
+			} ) }
+			id={ `deck-card-${ id }` }
+		>
+			<RichText
+				tagName="label"
+				value={ word }
+				onChange={ ( value ) => setAttributes( { word: value } ) }
+				style={
+					isSelected
+						? { border: '1px dashed black' }
+						: { border: 'none' }
+				}
+			/>
 		</div>
 	);
 };

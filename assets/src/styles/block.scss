@@ -19,24 +19,7 @@ body.post-type-deck {
   }
 }
 
-// Block container
-.deck-card-container {
-  padding: 0.4rem !important;
-
-  @media (min-width: 768px) {
-	flex: 0 0 auto;
-	width: 16.6667% !important;
-  }
-
-  label {
-	  display: inline-block;
-	  margin-bottom: 0 !important;
-	  padding: 3px 5px;
-	  line-height: 1;
-	}
-}
-
-// Actual block
+// block
 .wp-block-strategydeck-deck-card {
   transition: all 0.5s ease-in-out;
   position: relative;
@@ -52,6 +35,11 @@ body.post-type-deck {
   margin: 0 auto;
 
   label {
+	transition: all 0.5s ease-in-out;
+	display: inline-block;
+	margin-bottom: 0 !important;
+	padding: 3px 5px;
+	line-height: 1;
 	font-size: 1.375rem;
   }
 
@@ -72,6 +60,14 @@ body.post-type-deck {
 
   &:hover {
 	border-color: #3e5e6f;
-	color: #3e5e6f !important;
+
+	label {
+	  color: #3e5e6f !important;
+	}
+  }
+
+  @media (min-width: 768px) {
+	flex: 0 0 auto;
+	width: 16.6667% !important;
   }
 }

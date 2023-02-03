@@ -1,6 +1,4 @@
 import { useEffect, useState } from '@wordpress/element';
-import { RichText, useBlockProps } from '@wordpress/block-editor';
-import { blockStyle } from './index';
 
 const FrontendDeckCard = ( props ) => {
 	const { dataAttributes } = props;
@@ -8,8 +6,10 @@ const FrontendDeckCard = ( props ) => {
 	const [ attributes, setAttributes ] = useState( {
 		id: 0,
 		style: '',
+		word: '',
 	} );
 
+	// set the attributes, once
 	useEffect( () => {
 		setAttributes( {
 			...dataAttributes,
@@ -17,17 +17,25 @@ const FrontendDeckCard = ( props ) => {
 	}, [] );
 
 	return (
-		<div className="deck-card-container" id={ attributes.id }>
-			<div
-				style={ {
-					color: attributes.style.color,
-					backgroundColor: attributes.style.backgroundColor,
-				} }
+		<div
+			id={ attributes.id }
+			style={ {
+				color: attributes.style.color,
+				backgroundColor: attributes.style.backgroundColor,
+			} }
+		>
+			<label
+				className="form-check-label"
+				htmlFor={ attributes.id + `-input` }
 			>
-				{ /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
-				<label className="form-check-label" htmlFor="-input"></label>
-				<input id="-input" name="-input" value="" type="checkbox" />
-			</div>
+				{ attributes.word }
+			</label>
+			<input
+				id={ attributes.id + `-input` }
+				name={ attributes.id + `-input` }
+				value=""
+				type="checkbox"
+			/>
 		</div>
 	);
 };

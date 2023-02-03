@@ -8,6 +8,7 @@ deckCards.forEach( ( deckCard ) => {
 	const attributes = {
 		id: deckCard.id,
 		style: deckCard.style,
+		word: deckCard.firstElementChild.innerHTML,
 	};
 
 	render( <FrontendDeckCard dataAttributes={ attributes } />, deckCard );
