@@ -21,14 +21,9 @@
 	  "type": "string",
 	  "default": "Word"
 	},
-	"style": {
-	  "type": "object",
-	  "default": {
-		"color": {
-		  "background": "#fff9f1",
-		  "text": "#b1a57e"
-		}
-	  }
+	"checked": {
+	  "type": "boolean",
+	  "default": true
 	}
   },
   "supports": {

@@ -5,8 +5,9 @@ const FrontendDeckCard = ( props ) => {
 
 	const [ attributes, setAttributes ] = useState( {
 		block_id: 0,
-		style: '',
+		post_id: 0,
 		word: '',
+		checked: false,
 	} );
 
 	const [ isLoading, setLoading ] = useState( false );
@@ -18,6 +19,8 @@ const FrontendDeckCard = ( props ) => {
 			...dataAttributes,
 		} );
 	}, [] );
+
+	console.log( attributes );
 
 	// Clear notice after delay if not null.
 	useEffect( () => {
@@ -33,13 +36,7 @@ const FrontendDeckCard = ( props ) => {
 	}, [ notice ] );
 
 	return (
-		<div
-			id={ attributes.block_id }
-			style={ {
-				color: attributes.style.color,
-				backgroundColor: attributes.style.backgroundColor,
-			} }
-		>
+		<>
 			<label
 				className="form-check-label"
 				htmlFor={ attributes.block_id + `-input` }
@@ -47,11 +44,19 @@ const FrontendDeckCard = ( props ) => {
 				{ attributes.word }
 			</label>
 			<input
+				data-checked={ attributes.checked }
 				id={ attributes.block_id + `-input` }
 				name={ attributes.block_id + `-input` }
 				type="checkbox"
+				checked={ Boolean( attributes.checked ) }
+				onChange={ ( change ) =>
+					setAttributes( {
+						...attributes,
+						checked: change.target.checked,
+					} )
+				}
 			/>
-		</div>
+		</>
 	);
 };
 

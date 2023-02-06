@@ -4,7 +4,7 @@ import { useEffect } from '@wordpress/element';
 export const Edit = ( {
 	clientId,
 	isSelected,
-	attributes: { id, word, style },
+	attributes: { id, word, checked },
 	setAttributes,
 } ) => {
 	// useEffect sets the id once and only once.
@@ -19,12 +19,7 @@ export const Edit = ( {
 	}, [] );
 
 	return (
-		<div
-			{ ...useBlockProps( {
-				style: { style },
-			} ) }
-			id={ `deck-card-${ id }` }
-		>
+		<div { ...useBlockProps() } id={ `deck-card-${ id }` }>
 			<RichText
 				className="form-check-label"
 				htmlFor={ `${ id }-input` }
@@ -38,9 +33,11 @@ export const Edit = ( {
 				}
 			/>
 			<input
+				data-checked={ checked.toString() }
 				id={ `${ id }-input` }
 				name={ `${ id }-input` }
 				type="checkbox"
+				checked={ checked }
 			/>
 		</div>
 	);
