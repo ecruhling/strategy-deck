@@ -49,6 +49,8 @@ const Edit = _ref => {
   }), {
     id: `deck-card-${id}`
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    className: "form-check-label",
+    for: `${id}-input`,
     tagName: "label",
     value: word,
     onChange: value => setAttributes({
@@ -59,6 +61,10 @@ const Edit = _ref => {
     } : {
       border: 'none'
     }
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
+    id: `${id}-input`,
+    name: `${id}-input`,
+    type: "checkbox"
   }));
 };
 

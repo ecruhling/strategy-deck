@@ -57,7 +57,6 @@ const FrontendDeckCard = props => {
   }, attributes.word), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     id: attributes.block_id + `-input`,
     name: attributes.block_id + `-input`,
-    value: "",
     type: "checkbox"
   }));
 };

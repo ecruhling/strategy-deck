@@ -15,6 +15,6 @@ $wrapper_attributes = get_block_wrapper_attributes([
 	<label class="form-check-label" for="<?= $id; ?>-input">
 		<?= $word; ?>
 	</label>
-	<input id="<?= $id; ?>-input" name="<?= $id; ?>-input" value="" type="checkbox">
+	<input id="<?= $id; ?>-input" name="<?= $id; ?>-input" type="checkbox">
 </div>
 

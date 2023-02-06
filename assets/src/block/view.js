@@ -49,7 +49,6 @@ const FrontendDeckCard = ( props ) => {
 			<input
 				id={ attributes.block_id + `-input` }
 				name={ attributes.block_id + `-input` }
-				value=""
 				type="checkbox"
 			/>
 		</div>

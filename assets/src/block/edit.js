@@ -26,6 +26,8 @@ export const Edit = ( {
 			id={ `deck-card-${ id }` }
 		>
 			<RichText
+				className="form-check-label"
+				for={ `${ id }-input` }
 				tagName="label"
 				value={ word }
 				onChange={ ( value ) => setAttributes( { word: value } ) }
@@ -34,6 +36,11 @@ export const Edit = ( {
 						? { border: '1px dashed black' }
 						: { border: 'none' }
 				}
+			/>
+			<input
+				id={ `${ id }-input` }
+				name={ `${ id }-input` }
+				type="checkbox"
 			/>
 		</div>
 	);
