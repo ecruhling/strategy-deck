@@ -4,10 +4,6 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { blockIcon } from './icon';
 
-export const blockStyle = {
-	textAlign: 'center',
-};
-
 // The block configuration
 const blockConfig = require( './block.json' );
 

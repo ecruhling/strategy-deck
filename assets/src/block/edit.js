@@ -1,8 +1,6 @@
 import { RichText, useBlockProps } from '@wordpress/block-editor';
 import { useEffect } from '@wordpress/element';
 
-import { blockStyle } from './index';
-
 export const Edit = ( {
 	clientId,
 	isSelected,
@@ -23,7 +21,7 @@ export const Edit = ( {
 	return (
 		<div
 			{ ...useBlockProps( {
-				style: { ...blockStyle, style },
+				style: { style },
 			} ) }
 			id={ `deck-card-${ id }` }
 		>

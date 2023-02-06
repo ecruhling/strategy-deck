@@ -21,7 +21,7 @@ const FrontendDeckCard = props => {
     dataAttributes
   } = props;
   const [attributes, setAttributes] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    id: 0,
+    block_id: 0,
     style: '',
     word: ''
   });
@@ -46,17 +46,17 @@ const FrontendDeckCard = props => {
     return () => clearTimeout(timer);
   }, [notice]);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    id: attributes.id,
+    id: attributes.block_id,
     style: {
       color: attributes.style.color,
       backgroundColor: attributes.style.backgroundColor
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
     className: "form-check-label",
-    htmlFor: attributes.id + `-input`
+    htmlFor: attributes.block_id + `-input`
   }, attributes.word), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    id: attributes.id + `-input`,
-    name: attributes.id + `-input`,
+    id: attributes.block_id + `-input`,
+    name: attributes.block_id + `-input`,
     value: "",
     type: "checkbox"
   }));
@@ -160,7 +160,8 @@ const deckCardClass = '.wp-block-strategydeck-deck-card',
   deckCards = document.querySelectorAll(deckCardClass);
 deckCards.forEach(deckCard => {
   const attributes = {
-    id: deckCard.id,
+    block_id: deckCard.dataset.id,
+    post_id: parseInt(deckCard.dataset.post_id, 10),
     style: deckCard.style,
     word: deckCard.firstElementChild.innerHTML
   };

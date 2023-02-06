@@ -4,7 +4,7 @@ const FrontendDeckCard = ( props ) => {
 	const { dataAttributes } = props;
 
 	const [ attributes, setAttributes ] = useState( {
-		id: 0,
+		block_id: 0,
 		style: '',
 		word: '',
 	} );
@@ -34,7 +34,7 @@ const FrontendDeckCard = ( props ) => {
 
 	return (
 		<div
-			id={ attributes.id }
+			id={ attributes.block_id }
 			style={ {
 				color: attributes.style.color,
 				backgroundColor: attributes.style.backgroundColor,
@@ -42,13 +42,13 @@ const FrontendDeckCard = ( props ) => {
 		>
 			<label
 				className="form-check-label"
-				htmlFor={ attributes.id + `-input` }
+				htmlFor={ attributes.block_id + `-input` }
 			>
 				{ attributes.word }
 			</label>
 			<input
-				id={ attributes.id + `-input` }
-				name={ attributes.id + `-input` }
+				id={ attributes.block_id + `-input` }
+				name={ attributes.block_id + `-input` }
 				value=""
 				type="checkbox"
 			/>
