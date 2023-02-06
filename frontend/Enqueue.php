@@ -38,7 +38,7 @@ class Enqueue extends Base {
 	}
 
 	/**
-	 * Enqueue assets with Inpyside library https://inpsyde.github.io/assets
+	 * Enqueue assets with Inpsyde library https://inpsyde.github.io/assets
 	 *
 	 * @param AssetManager $asset_manager The class.
 	 * @return void
@@ -97,14 +97,13 @@ class Enqueue extends Base {
 			->withVersion( SD_VERSION );
 		$scripts[0]->dependencies();
 		$scripts[0]->withLocalize(
-			'example_demo',
+			'initDecks',
 			array(
-				'alert'   => __( 'Error!', SD_TEXTDOMAIN ),
+				'route'   => 'strategydeck/v1/decks',
 				'nonce'   => wp_create_nonce( 'demo_example' ),
 				'wp_rest' => wp_create_nonce( 'wp_rest' ),
 			)
 		);
-
 
 		return $scripts;
 	}

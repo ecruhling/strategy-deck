@@ -9,12 +9,28 @@ const FrontendDeckCard = ( props ) => {
 		word: '',
 	} );
 
+	const [ isLoading, setLoading ] = useState( false );
+	const [ notice, setNotice ] = useState( null );
+
 	// set the attributes, once
 	useEffect( () => {
 		setAttributes( {
 			...dataAttributes,
 		} );
 	}, [] );
+
+	// Clear notice after delay if not null.
+	useEffect( () => {
+		if ( null === notice ) {
+			return;
+		}
+
+		const timer = setTimeout( () => {
+			setNotice( null );
+		}, 60000 );
+
+		return () => clearTimeout( timer );
+	}, [ notice ] );
 
 	return (
 		<div

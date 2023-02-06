@@ -17,6 +17,7 @@ use WP_Post;
 use WP_REST_Request;
 use WP_REST_Response;
 use WP_REST_Server;
+use function __;
 use function add_action;
 use function get_post_meta;
 use function is_wp_error;
@@ -70,7 +71,7 @@ class Deck extends Base {
 				'get_callback'    => array( $this, 'get_text_field' ),
 				'update_callback' => array( $this, 'update_text_field' ),
 				'schema'          => array(
-					'description' => \__( 'Text field demo of Post type', SD_TEXTDOMAIN ),
+					'description' => __( 'Text field demo of Post type', SD_TEXTDOMAIN ),
 					'type'        => 'string',
 				),
 			)
@@ -87,7 +88,7 @@ class Deck extends Base {
 	public function add_deck_rest_route(): void
 	{
 		register_rest_route( 'strategydeck/v1', '/decks/(?P<id>[\d]+)', [
-			'methods'             => WP_REST_SERVER::EDITABLE,
+			'methods'             => WP_REST_SERVER::ALLMETHODS,
 			'callback'            => [ $this, 'update_deck' ],
 			'permission_callback' => [ $this, 'check_deck_permissions' ],
 		] );
@@ -126,6 +127,7 @@ class Deck extends Base {
 	 * @return WP_REST_Response
 	 */
 	function update_deck( WP_REST_Request $request ) : WP_REST_Response {
+
 		$post_id      = $request->get_param( 'id' );
 		$block_id     = $request->get_param( 'block_id' );
 		$post_content = get_post_field( 'post_content', $post_id );
@@ -147,7 +149,7 @@ class Deck extends Base {
 			'post_content' => serialize_blocks( $post_blocks ),
 		] );
 
-		return new WP_REST_Response( __( 'Initiative updated.', 'resource-tracker' ), 200 );
+		return new WP_REST_Response( __( 'Deck updated.', 'strategydeck' ), 200 );
 	}
 
 	/**
@@ -178,7 +180,7 @@ class Deck extends Base {
 		if ( false === $post_id ) {
 			return new WP_Error(
 				'rest_post_views_failed',
-				\__( 'Failed to update post views.', SD_TEXTDOMAIN ),
+				__( 'Failed to update post views.', SD_TEXTDOMAIN ),
 				array( 'status' => 500 )
 			);
 		}

@@ -25,6 +25,8 @@ const FrontendDeckCard = props => {
     style: '',
     word: ''
   });
+  const [isLoading, setLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [notice, setNotice] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
 
   // set the attributes, once
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
@@ -32,6 +34,17 @@ const FrontendDeckCard = props => {
       ...dataAttributes
     });
   }, []);
+
+  // Clear notice after delay if not null.
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (null === notice) {
+      return;
+    }
+    const timer = setTimeout(() => {
+      setNotice(null);
+    }, 60000);
+    return () => clearTimeout(timer);
+  }, [notice]);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     id: attributes.id,
     style: {
