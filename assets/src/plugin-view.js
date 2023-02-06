@@ -1,3 +1,4 @@
+// Runs just on the front end.
 import FrontendDeckCard from './block/view';
 import { render } from '@wordpress/element';
 

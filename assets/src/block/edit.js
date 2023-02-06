@@ -27,7 +27,7 @@ export const Edit = ( {
 		>
 			<RichText
 				className="form-check-label"
-				for={ `${ id }-input` }
+				htmlFor={ `${ id }-input` }
 				tagName="label"
 				value={ word }
 				onChange={ ( value ) => setAttributes( { word: value } ) }

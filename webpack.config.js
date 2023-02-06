@@ -7,6 +7,7 @@ const entry = {};
 	'plugin-block',
 	'plugin-public',
 	'plugin-view',
+	'plugin-block_script',
 	'plugin-settings',
 ].forEach(
 	( script ) =>
