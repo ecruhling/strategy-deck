@@ -21,13 +21,11 @@ body.post-type-deck {
 
 // block
 .wp-block-strategydeck-deck-card {
-  transition: all 0.5s ease-in-out;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  border: solid 2px #b1a57e;
   height: 10vw;
   min-height: 70px;
   max-height: 115px;
@@ -35,18 +33,21 @@ body.post-type-deck {
   margin: 0 auto;
 
   label {
-	transition: all 0.5s ease-in-out;
+	transition: all 0.25s ease-in-out;
 	display: inline-block;
+	color: #b1a57e;
 	margin-bottom: 0 !important;
 	padding: 3px 5px;
 	line-height: 1;
 	font-size: 1.375rem;
+	z-index: 20;
   }
 
   input {
-	background: transparent;
-	//appearance: none;
-	border: none;
+	transition: all 0.25s ease-in-out;
+	background-color: #fff9f1;
+	appearance: none;
+	border: solid 2px #b1a57e;
 	position: absolute;
 	inset: 0;
 	width: 100%;
@@ -54,16 +55,14 @@ body.post-type-deck {
 	display: block;
 	z-index: 10;
 
-	&:hover {
+	&:hover,
+	&:checked {
+	  border-color: #3e5e6f;
 	  cursor: pointer;
-	}
-  }
 
-  &:hover {
-	border-color: #3e5e6f;
-
-	label {
-	  color: #3e5e6f !important;
+	  + label {
+		color: #3e5e6f !important;
+	  }
 	}
   }
 

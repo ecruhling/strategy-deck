@@ -35,7 +35,13 @@ const FrontendDeckCard = props => {
       ...dataAttributes
     });
   }, []);
-  console.log(attributes);
+
+  // eslint-disable-next-line camelcase
+  const {
+    block_id,
+    word,
+    checked
+  } = attributes;
 
   // Clear notice after delay if not null.
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
@@ -47,20 +53,23 @@ const FrontendDeckCard = props => {
     }, 60000);
     return () => clearTimeout(timer);
   }, [notice]);
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
-    className: "form-check-label",
-    htmlFor: attributes.block_id + `-input`
-  }, attributes.word), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    "data-checked": attributes.checked,
-    id: attributes.block_id + `-input`,
-    name: attributes.block_id + `-input`,
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    "data-checked": checked
+    /* eslint-disable-next-line camelcase */,
+    id: block_id + `-input`
+    /* eslint-disable-next-line camelcase */,
+    name: block_id + `-input`,
     type: "checkbox",
-    checked: Boolean(attributes.checked),
+    checked: Boolean(checked),
     onChange: change => setAttributes({
       ...attributes,
       checked: change.target.checked
     })
-  }));
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+    className: "form-check-label"
+    /* eslint-disable-next-line camelcase */,
+    htmlFor: block_id + `-input`
+  }, word));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FrontendDeckCard);
 

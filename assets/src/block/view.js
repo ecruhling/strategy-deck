@@ -20,7 +20,8 @@ const FrontendDeckCard = ( props ) => {
 		} );
 	}, [] );
 
-	console.log( attributes );
+	// eslint-disable-next-line camelcase
+	const { block_id, word, checked } = attributes;
 
 	// Clear notice after delay if not null.
 	useEffect( () => {
@@ -37,18 +38,14 @@ const FrontendDeckCard = ( props ) => {
 
 	return (
 		<>
-			<label
-				className="form-check-label"
-				htmlFor={ attributes.block_id + `-input` }
-			>
-				{ attributes.word }
-			</label>
 			<input
-				data-checked={ attributes.checked }
-				id={ attributes.block_id + `-input` }
-				name={ attributes.block_id + `-input` }
+				data-checked={ checked }
+				/* eslint-disable-next-line camelcase */
+				id={ block_id + `-input` }
+				/* eslint-disable-next-line camelcase */
+				name={ block_id + `-input` }
 				type="checkbox"
-				checked={ Boolean( attributes.checked ) }
+				checked={ Boolean( checked ) }
 				onChange={ ( change ) =>
 					setAttributes( {
 						...attributes,
@@ -56,6 +53,13 @@ const FrontendDeckCard = ( props ) => {
 					} )
 				}
 			/>
+			<label
+				className="form-check-label"
+				/* eslint-disable-next-line camelcase */
+				htmlFor={ block_id + `-input` }
+			>
+				{ word }
+			</label>
 		</>
 	);
 };
