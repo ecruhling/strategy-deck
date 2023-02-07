@@ -14,6 +14,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1__);
+
 
 
 const FrontendDeckCard = props => {
@@ -50,9 +53,46 @@ const FrontendDeckCard = props => {
     }
     const timer = setTimeout(() => {
       setNotice(null);
-    }, 60000);
+    }, 1500);
     return () => clearTimeout(timer);
   }, [notice]);
+
+  // save updates.
+  const saveUpdates = async () => {
+    setLoading(true);
+    setNotice(null);
+    console.log({
+      ...attributes,
+      checked: !checked
+    });
+    const response = await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
+      // eslint-disable-next-line no-undef
+      path: `${initDecks.route}/${dataAttributes.post_id}`,
+      // strategydeck/v1/decks/11622
+      method: 'POST',
+      data: {
+        ...attributes,
+        checked: !checked
+      }
+    }).then(success => {
+      // Update dataAttributes to reflect changes here...
+      // E.g., dataAttributes.someAttr = someAttr;
+
+      dataAttributes.checked = !checked;
+      console.log(dataAttributes.checked);
+      return {
+        type: 'success',
+        message: success
+      };
+    }).catch(error => {
+      return {
+        type: 'error',
+        message: error.message
+      };
+    });
+    setLoading(false);
+    setNotice(response);
+  };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     "data-checked": checked
     /* eslint-disable-next-line camelcase */,
@@ -63,17 +103,33 @@ const FrontendDeckCard = props => {
     // something wrong here; should not be setting checked
     ,
     checked: checked,
-    onChange: change => setAttributes({
-      ...attributes,
-      checked: change.target.checked
-    })
+    onChange: change => {
+      setAttributes({
+        ...attributes,
+        checked: change.target.checked
+      });
+      saveUpdates();
+    }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
     className: "form-check-label"
     /* eslint-disable-next-line camelcase */,
     htmlFor: block_id + `-input`
-  }, word));
+  }, word), null !== notice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: `notice ${notice.type}`,
+    role: 'error' === notice.type ? 'alert' : 'status'
+  }, notice.message));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FrontendDeckCard);
+
+/***/ }),
+
+/***/ "@wordpress/api-fetch":
+/*!**********************************!*\
+  !*** external ["wp","apiFetch"] ***!
+  \**********************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["apiFetch"];
 
 /***/ }),
 

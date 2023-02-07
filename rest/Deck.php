@@ -117,7 +117,7 @@ class Deck extends Base {
 			'post_content' => serialize_blocks( $post_blocks ),
 		] );
 
-		return new WP_REST_Response( __( 'Deck updated.', 'strategydeck' ), 200 );
+		return new WP_REST_Response( __( 'Updated.', 'strategydeck' ), 200 );
 	}
 
 }

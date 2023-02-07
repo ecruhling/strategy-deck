@@ -54,5 +54,8 @@
     },
     "browserslist": [
         "extends @wordpress/browserslist-config"
-    ]
+    ],
+    "dependencies": {
+        "@wordpress/api-fetch": "^6.23.0"
+    }
 }

@@ -56,6 +56,14 @@ body.post-type-deck .editor-styles-wrapper .wp-block-post-content {
 .wp-block-strategydeck-deck-card input:hover + label, .wp-block-strategydeck-deck-card input:checked + label {
   color: #3e5e6f !important;
 }
+.wp-block-strategydeck-deck-card span.notice {
+  color: red;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 25;
+}
 @media (min-width: 768px) {
   .wp-block-strategydeck-deck-card {
     flex: 0 0 auto;

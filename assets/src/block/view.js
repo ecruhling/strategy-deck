@@ -1,4 +1,5 @@
 import { useEffect, useState } from '@wordpress/element';
+import apiFetch from '@wordpress/api-fetch';
 
 const FrontendDeckCard = ( props ) => {
 	const { dataAttributes } = props;
@@ -31,10 +32,50 @@ const FrontendDeckCard = ( props ) => {
 
 		const timer = setTimeout( () => {
 			setNotice( null );
-		}, 60000 );
+		}, 1500 );
 
 		return () => clearTimeout( timer );
 	}, [ notice ] );
+
+	// save updates.
+	const saveUpdates = async () => {
+		setLoading( true );
+		setNotice( null );
+
+		console.log( { ...attributes, checked: ! checked } );
+
+		const response = await apiFetch( {
+			// eslint-disable-next-line no-undef
+			path: `${ initDecks.route }/${ dataAttributes.post_id }`, // strategydeck/v1/decks/11622
+			method: 'POST',
+			data: {
+				...attributes,
+				checked: ! checked,
+			},
+		} )
+			.then( ( success ) => {
+				// Update dataAttributes to reflect changes here...
+				// E.g., dataAttributes.someAttr = someAttr;
+
+				dataAttributes.checked = ! checked;
+
+				console.log( dataAttributes.checked );
+
+				return {
+					type: 'success',
+					message: success,
+				};
+			} )
+			.catch( ( error ) => {
+				return {
+					type: 'error',
+					message: error.message,
+				};
+			} );
+
+		setLoading( false );
+		setNotice( response );
+	};
 
 	return (
 		<>
@@ -47,12 +88,13 @@ const FrontendDeckCard = ( props ) => {
 				type="checkbox"
 				// something wrong here; should not be setting checked
 				checked={ checked }
-				onChange={ ( change ) =>
+				onChange={ ( change ) => {
 					setAttributes( {
 						...attributes,
 						checked: change.target.checked,
-					} )
-				}
+					} );
+					saveUpdates();
+				} }
 			/>
 			<label
 				className="form-check-label"
@@ -61,6 +103,14 @@ const FrontendDeckCard = ( props ) => {
 			>
 				{ word }
 			</label>
+			{ null !== notice && (
+				<span
+					className={ `notice ${ notice.type }` }
+					role={ 'error' === notice.type ? 'alert' : 'status' }
+				>
+					{ notice.message }
+				</span>
+			) }
 		</>
 	);
 };

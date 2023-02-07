@@ -70,6 +70,15 @@ body.post-type-deck {
 	}
   }
 
+  span.notice {
+	color: red;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 25;
+  }
+
   @media (min-width: 768px) {
 	flex: 0 0 auto;
 	width: 16.6667% !important;
