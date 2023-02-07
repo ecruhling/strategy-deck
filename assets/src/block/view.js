@@ -45,7 +45,8 @@ const FrontendDeckCard = ( props ) => {
 				/* eslint-disable-next-line camelcase */
 				name={ block_id + `-input` }
 				type="checkbox"
-				checked={ Boolean( checked ) }
+				// something wrong here; should not be setting checked
+				checked={ checked }
 				onChange={ ( change ) =>
 					setAttributes( {
 						...attributes,

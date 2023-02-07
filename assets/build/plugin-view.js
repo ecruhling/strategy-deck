@@ -59,8 +59,10 @@ const FrontendDeckCard = props => {
     id: block_id + `-input`
     /* eslint-disable-next-line camelcase */,
     name: block_id + `-input`,
-    type: "checkbox",
-    checked: Boolean(checked),
+    type: "checkbox"
+    // something wrong here; should not be setting checked
+    ,
+    checked: checked,
     onChange: change => setAttributes({
       ...attributes,
       checked: change.target.checked
@@ -173,8 +175,8 @@ deckCards.forEach(deckCard => {
   const attributes = {
     block_id: deckCard.dataset.id,
     post_id: parseInt(deckCard.dataset.post_id, 10),
-    word: deckCard.firstElementChild.innerHTML,
-    checked: deckCard.firstElementChild.nextElementSibling.dataset.checked
+    word: deckCard.firstElementChild.nextElementSibling.innerHTML,
+    checked: deckCard.firstElementChild.checked
   };
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.render)((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_block_view__WEBPACK_IMPORTED_MODULE_1__["default"], {
     dataAttributes: attributes

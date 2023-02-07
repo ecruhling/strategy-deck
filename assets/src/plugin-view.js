@@ -9,8 +9,8 @@ deckCards.forEach( ( deckCard ) => {
 	const attributes = {
 		block_id: deckCard.dataset.id,
 		post_id: parseInt( deckCard.dataset.post_id, 10 ),
-		word: deckCard.firstElementChild.innerHTML,
-		checked: deckCard.firstElementChild.nextElementSibling.dataset.checked,
+		word: deckCard.firstElementChild.nextElementSibling.innerHTML,
+		checked: deckCard.firstElementChild.checked,
 	};
 
 	render( <FrontendDeckCard dataAttributes={ attributes } />, deckCard );

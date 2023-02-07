@@ -11,9 +11,9 @@ $wrapper_attributes = get_block_wrapper_attributes([
 
 <div id="<?= $id; ?>" <?= $wrapper_attributes; ?>
 		 data-id="<?= $id; ?>" data-post_id="<?= $post_id; ?>">
+	<input data-checked="<?= json_encode($checked); ?>" id="<?= $id; ?>-input" name="<?= $id; ?>-input" type="checkbox" <?= $checked ? 'checked' : ''; ?>>
 	<label class="form-check-label" for="<?= $id; ?>-input">
 		<?= $word; ?>
 	</label>
-	<input data-checked="<?= json_encode($checked); ?>" id="<?= $id; ?>-input" name="<?= $id; ?>-input" type="checkbox" <?= $checked ? 'checked' : ''; ?>>
 </div>
 

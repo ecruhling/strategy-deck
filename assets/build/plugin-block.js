@@ -44,6 +44,15 @@ const Edit = _ref => {
   }, []);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), {
     id: `deck-card-${id}`
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
+    "data-checked": checked.toString(),
+    id: `${id}-input`,
+    name: `${id}-input`,
+    type: "checkbox",
+    checked: checked,
+    onChange: change => setAttributes({
+      checked: change.target.checked
+    })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     className: "form-check-label",
     htmlFor: `${id}-input`,
@@ -57,12 +66,6 @@ const Edit = _ref => {
     } : {
       border: 'none'
     }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
-    "data-checked": checked.toString(),
-    id: `${id}-input`,
-    name: `${id}-input`,
-    type: "checkbox",
-    checked: checked
   }));
 };
 

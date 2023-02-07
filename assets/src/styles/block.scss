@@ -55,6 +55,10 @@ body.post-type-deck {
 	display: block;
 	z-index: 10;
 
+	&::before {
+	  display: none !important;
+	}
+
 	&:hover,
 	&:checked {
 	  border-color: #3e5e6f;

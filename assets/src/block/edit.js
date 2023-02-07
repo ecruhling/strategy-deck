@@ -20,6 +20,18 @@ export const Edit = ( {
 
 	return (
 		<div { ...useBlockProps() } id={ `deck-card-${ id }` }>
+			<input
+				data-checked={ checked.toString() }
+				id={ `${ id }-input` }
+				name={ `${ id }-input` }
+				type="checkbox"
+				checked={ checked }
+				onChange={ ( change ) =>
+					setAttributes( {
+						checked: change.target.checked,
+					} )
+				}
+			/>
 			<RichText
 				className="form-check-label"
 				htmlFor={ `${ id }-input` }
@@ -31,13 +43,6 @@ export const Edit = ( {
 						? { border: '1px dashed black' }
 						: { border: 'none' }
 				}
-			/>
-			<input
-				data-checked={ checked.toString() }
-				id={ `${ id }-input` }
-				name={ `${ id }-input` }
-				type="checkbox"
-				checked={ checked }
 			/>
 		</div>
 	);
