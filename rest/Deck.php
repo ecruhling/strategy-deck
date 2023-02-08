@@ -98,16 +98,17 @@ class Deck extends Base {
 
 		$post_id      = $request->get_param( 'id' );
 		$block_id     = $request->get_param( 'block_id' );
+		$checked     = $request->get_param( 'checked' );
 		$post_content = get_post_field( 'post_content', $post_id );
 		$post_blocks  = parse_blocks( $post_content );
 
-		$post_blocks = array_map( function( $block ) use ( $block_id ) {
+		$post_blocks = array_map( function( $block ) use ($checked, $block_id ) {
 			if ( 'strategydeck/deck-card' !== ( $block['blockName'] ?? '' ) || ( $block['attrs']['id'] ?? 0 ) !== $block_id ) {
 				return $block;
 			}
 
-			// Update block attributes here...
-			// E.g., $block['attrs']['some-attr'] = $attr_value;
+			// Update block attributes
+			$block['attrs']['checked'] = $checked;
 
 			return $block;
 		}, $post_blocks );
