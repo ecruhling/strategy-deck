@@ -53,7 +53,7 @@ const FrontendDeckCard = props => {
     }
     const timer = setTimeout(() => {
       setNotice(null);
-    }, 1500);
+    }, 500);
     return () => clearTimeout(timer);
   }, [notice]);
 
@@ -61,10 +61,6 @@ const FrontendDeckCard = props => {
   const saveUpdates = async () => {
     setLoading(true);
     setNotice(null);
-    console.log({
-      ...attributes,
-      checked: !checked
-    });
     const response = await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
       // eslint-disable-next-line no-undef
       path: `${initDecks.route}/${dataAttributes.post_id}`,
@@ -75,11 +71,8 @@ const FrontendDeckCard = props => {
         checked: !checked
       }
     }).then(success => {
-      // Update dataAttributes to reflect changes here...
-      // E.g., dataAttributes.someAttr = someAttr;
-
+      // Update dataAttributes to reflect changes.
       dataAttributes.checked = !checked;
-      console.log(dataAttributes.checked);
       return {
         type: 'success',
         message: success
@@ -99,9 +92,7 @@ const FrontendDeckCard = props => {
     id: block_id + `-input`
     /* eslint-disable-next-line camelcase */,
     name: block_id + `-input`,
-    type: "checkbox"
-    // something wrong here; should not be setting checked
-    ,
+    type: "checkbox",
     checked: checked,
     onChange: change => {
       setAttributes({
@@ -117,7 +108,13 @@ const FrontendDeckCard = props => {
   }, word), null !== notice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: `notice ${notice.type}`,
     role: 'error' === notice.type ? 'alert' : 'status'
-  }, notice.message));
+  }, notice.message, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    className: "spinner"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("circle", {
+    cx: "10",
+    cy: "10",
+    r: "7"
+  }))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FrontendDeckCard);
 

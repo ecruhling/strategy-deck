@@ -32,7 +32,7 @@ const FrontendDeckCard = ( props ) => {
 
 		const timer = setTimeout( () => {
 			setNotice( null );
-		}, 1500 );
+		}, 500 );
 
 		return () => clearTimeout( timer );
 	}, [ notice ] );
@@ -41,8 +41,6 @@ const FrontendDeckCard = ( props ) => {
 	const saveUpdates = async () => {
 		setLoading( true );
 		setNotice( null );
-
-		console.log( { ...attributes, checked: ! checked } );
 
 		const response = await apiFetch( {
 			// eslint-disable-next-line no-undef
@@ -54,12 +52,8 @@ const FrontendDeckCard = ( props ) => {
 			},
 		} )
 			.then( ( success ) => {
-				// Update dataAttributes to reflect changes here...
-				// E.g., dataAttributes.someAttr = someAttr;
-
+				// Update dataAttributes to reflect changes.
 				dataAttributes.checked = ! checked;
-
-				console.log( dataAttributes.checked );
 
 				return {
 					type: 'success',
@@ -86,7 +80,6 @@ const FrontendDeckCard = ( props ) => {
 				/* eslint-disable-next-line camelcase */
 				name={ block_id + `-input` }
 				type="checkbox"
-				// something wrong here; should not be setting checked
 				checked={ checked }
 				onChange={ ( change ) => {
 					setAttributes( {
@@ -109,6 +102,9 @@ const FrontendDeckCard = ( props ) => {
 					role={ 'error' === notice.type ? 'alert' : 'status' }
 				>
 					{ notice.message }
+					<svg className="spinner">
+						<circle cx="10" cy="10" r="7"></circle>
+					</svg>
 				</span>
 			) }
 		</>

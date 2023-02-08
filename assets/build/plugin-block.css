@@ -20,7 +20,7 @@ body.post-type-deck .editor-styles-wrapper .wp-block-post-content {
   height: 10vw;
   min-height: 70px;
   max-height: 115px;
-  max-width: 205px;
+  max-width: 205px !important;
   margin: 0 auto;
 }
 .wp-block-strategydeck-deck-card label {
@@ -68,6 +68,38 @@ body.post-type-deck .editor-styles-wrapper .wp-block-post-content {
   .wp-block-strategydeck-deck-card {
     flex: 0 0 auto;
     width: 16.6667% !important;
+  }
+}
+
+svg.spinner {
+  width: 20px;
+  height: 20px;
+  x: 0px;
+  y: 0px;
+  viewBox: 0 0 20 20;
+}
+svg.spinner circle {
+  fill: transparent;
+  stroke: #3e5e6f;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 62.8;
+  transform-origin: 10px 10px 0;
+  animation: spinner 1.5s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+    stroke-dashoffset: 13.2;
+  }
+  50% {
+    transform: rotate(720deg);
+    stroke-dashoffset: 62.8;
+  }
+  100% {
+    transform: rotate(1080deg);
+    stroke-dashoffset: 13.2;
   }
 }
 

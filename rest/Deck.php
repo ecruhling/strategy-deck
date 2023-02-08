@@ -56,7 +56,7 @@ class Deck extends Base {
 	public function add_deck_rest_route(): void
 	{
 		register_rest_route( 'strategydeck/v1', '/decks/(?P<id>[\d]+)', [
-			'methods'             => WP_REST_SERVER::ALLMETHODS,
+			'methods'             => WP_REST_SERVER::EDITABLE,
 			'callback'            => [ $this, 'update_deck' ],
 //			'permission_callback' => [ $this, 'check_deck_permissions' ],
 		] );
@@ -118,7 +118,7 @@ class Deck extends Base {
 			'post_content' => serialize_blocks( $post_blocks ),
 		] );
 
-		return new WP_REST_Response( __( 'Updated.', 'strategydeck' ), 200 );
+		return new WP_REST_Response( __( '', 'strategydeck' ), 200 );
 	}
 
 }
