@@ -1,3 +1,8 @@
+<style>
+	body > #error {
+			display: none !important;
+	}
+</style>
 <article <?php post_class( 'container-fluid d-flex flex-wrap align-content-between justify-content-center' ); ?>>
 	<div class="row flex-1-1-100 align-items-center px-md-3 px-lg-4 py-md-2" id="deck-header">
 		<div class="col-md-6 pt-3 pb-md-3">
