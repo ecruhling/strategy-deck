@@ -53,7 +53,7 @@ const FrontendDeckCard = props => {
     }
     const timer = setTimeout(() => {
       setNotice(null);
-    }, 500);
+    }, 250);
     return () => clearTimeout(timer);
   }, [notice]);
 

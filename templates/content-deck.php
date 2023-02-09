@@ -9,14 +9,13 @@
 					<p class="mb-0">Select the adjectives that best describe the project.</p>
 				</div>
 				<div class="col-md-3 text-md-end">
-					<button id="deck-reset">RESET</button>
+					<button id="deck-reset" class="d-none">RESET</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	<form class="row d-flex px-0 flex-1-1-100 mx-0 justify-content-center align-items-center form-check py-3" id="deck-form">
 		<?php the_content(); ?>
-		<button type="submit" class="d-none" id="deck-submit">Submit</button>
 	</form>
 	<div class="row flex-1-1-100 px-md-3 px-lg-4 pb-3">
 		<div class="col-md-6">
