@@ -15,6 +15,7 @@
 				</div>
 				<div class="col-md-3 text-md-end">
 					<button id="deck-reset" class="d-none">RESET</button>
+					<button id="deck-print" class="">PRINT</button>
 				</div>
 			</div>
 		</div>
