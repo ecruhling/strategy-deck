@@ -10556,14 +10556,28 @@ deckCards.forEach(deckCard => {
   }), deckCard);
 });
 function printPDF() {
-  const doc = new jspdf__WEBPACK_IMPORTED_MODULE_2__.jsPDF();
-  doc.html(document.getElementById('deck-form'), function () {
-    doc.save('deck.pdf');
+  const pdf = new jspdf__WEBPACK_IMPORTED_MODULE_2__.jsPDF({
+    orientation: 'landscape',
+    unit: 'pt',
+    format: 'ledger',
+    putOnlyUsedFonts: true,
+    compress: true
+  });
+  pdf.html(document.body, {
+    html2canvas: {
+      scale: 0.9
+    },
+    callback() {
+      // pdf.save( 'deck.pdf' );
+      const iframe = document.createElement('iframe');
+      iframe.setAttribute('style', 'position:fixed;right:0; top:0; height:100vh; width:50vw; z-index: 9999;');
+      document.body.appendChild(iframe);
+      iframe.src = pdf.output('datauristring');
+    }
   });
 }
-document.getElementById('deck-print').addEventListener('click', event => {
+document.getElementById('deck-print').addEventListener('click', () => {
   printPDF();
-  console.log(event);
 });
 })();
 

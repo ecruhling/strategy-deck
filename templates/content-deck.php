@@ -14,8 +14,8 @@
 					<p class="mb-0">Select the adjectives that best describe the project.</p>
 				</div>
 				<div class="col-md-3 text-md-end">
-					<button id="deck-reset" class="d-none">RESET</button>
-					<button id="deck-print" class="">PRINT</button>
+					<button class="btn d-none" id="deck-reset">RESET</button>
+					<button class="btn text-light" id="deck-print">DOWNLOAD</button>
 				</div>
 			</div>
 		</div>
