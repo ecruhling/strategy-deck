@@ -15,7 +15,9 @@
 				</div>
 				<div class="col-md-3 text-md-end">
 					<button class="btn d-none" id="deck-reset">RESET</button>
-					<button class="btn text-light" id="deck-print">DOWNLOAD</button>
+					<button class="btn text-light p-0 m-0" id="deck-print">
+						<span class="visually-hidden">DOWNLOAD</span>
+					</button>
 				</div>
 			</div>
 		</div>

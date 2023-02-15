@@ -23,12 +23,12 @@ function printPDF() {
 		orientation: 'landscape',
 		unit: 'pt',
 		format: 'ledger',
-		putOnlyUsedFonts: true,
-		compress: true,
+		putOnlyUsedFonts: false,
 	} );
 
 	pdf.html( document.body, {
 		html2canvas: {
+			// logging: true,
 			scale: 0.9,
 		},
 		callback() {
