@@ -3,6 +3,7 @@ import FrontendDeckCard from './block/view';
 import { render } from '@wordpress/element';
 import { jsPDF } from 'jspdf';
 import 'html2canvas';
+import 'html2pdf.js';
 
 const deckCardClass = '.wp-block-strategydeck-deck-card',
 	deckCards = document.querySelectorAll( deckCardClass );
@@ -28,7 +29,6 @@ function printPDF() {
 
 	pdf.html( document.body, {
 		html2canvas: {
-			// logging: true,
 			scale: 0.9,
 		},
 		callback() {
