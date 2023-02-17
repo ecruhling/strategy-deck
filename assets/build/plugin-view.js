@@ -10552,8 +10552,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // select all the deck cards
-const deckCardClass = '.wp-block-strategydeck-deck-card',
-  deckCards = document.querySelectorAll(deckCardClass);
+const deckCards = document.querySelectorAll('.wp-block-strategydeck-deck-card');
 
 // iterate over the deck cards, apply attributes, and render each component
 deckCards.forEach(deckCard => {
@@ -10569,9 +10568,11 @@ deckCards.forEach(deckCard => {
 });
 
 // click on #deck-print button
-document.getElementById('deck-print').addEventListener('click', () => {
+document.getElementById('deck-print').addEventListener('click', event => {
   // the element to print - entire body; the buttons have 'data-html2canvas-ignore' attributes, so they are ignored.
   const body = document.body;
+  const timestamp = new Date().getTime();
+  const title = event.target.getAttribute('data-title');
   jspdf_html2canvas__WEBPACK_IMPORTED_MODULE_2___default()(body, {
     html2canvas: {
       scale: 1,
@@ -10585,7 +10586,18 @@ document.getElementById('deck-print').addEventListener('click', () => {
       format: [body.offsetWidth, body.offsetHeight + 150]
     },
     imageType: 'image/jpeg',
-    output: document.title + '.pdf'
+    output: title + '-' + timestamp + '.pdf'
+  });
+});
+
+// click on #deck-reset button
+document.getElementById('deck-reset').addEventListener('click', () => {
+  const deckCardInputsChecked = document.querySelectorAll("input[data-checked='true']");
+  deckCardInputsChecked.forEach(inputElement => {
+    inputElement.click();
+    // inputElement.dispatchEvent( new Event( 'change' ) );
+    // inputElement.checked = false;
+    // inputElement.setAttribute( 'data-checked', 'false' );
   });
 });
 })();

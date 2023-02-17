@@ -15,7 +15,7 @@
 				</div>
 				<div class="col-md-3 text-md-end">
 					<button class="btn btn-deck pb-1" id="deck-reset" data-html2canvas-ignore>RESET</button>
-					<button class="btn btn-deck p-0 m-0" id="deck-print" data-html2canvas-ignore>
+					<button class="btn btn-deck p-0 m-0" id="deck-print" data-html2canvas-ignore data-title="<?= sanitize_title(get_the_title()); ?>">
 						<span class="visually-hidden">DOWNLOAD</span>
 					</button>
 				</div>

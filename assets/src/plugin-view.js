@@ -4,8 +4,9 @@ import { render } from '@wordpress/element';
 import html2PDF from 'jspdf-html2canvas';
 
 // select all the deck cards
-const deckCardClass = '.wp-block-strategydeck-deck-card',
-	deckCards = document.querySelectorAll( deckCardClass );
+const deckCards = document.querySelectorAll(
+	'.wp-block-strategydeck-deck-card'
+);
 
 // iterate over the deck cards, apply attributes, and render each component
 deckCards.forEach( ( deckCard ) => {
@@ -20,23 +21,41 @@ deckCards.forEach( ( deckCard ) => {
 } );
 
 // click on #deck-print button
-document.getElementById( 'deck-print' ).addEventListener( 'click', () => {
-	// the element to print - entire body; the buttons have 'data-html2canvas-ignore' attributes, so they are ignored.
-	const body = document.body;
+document
+	.getElementById( 'deck-print' )
+	.addEventListener( 'click', ( event ) => {
+		// the element to print - entire body; the buttons have 'data-html2canvas-ignore' attributes, so they are ignored.
+		const body = document.body;
+		const timestamp = new Date().getTime();
+		const title = event.target.getAttribute( 'data-title' );
 
-	html2PDF( body, {
-		html2canvas: {
-			scale: 1,
-			foreignObjectRendering: true,
-			scrollX: 0,
-			scrollY: -window.scrollY,
-		},
-		jsPDF: {
-			orientation: 'landscape',
-			// format: 'letter',
-			format: [ body.offsetWidth, body.offsetHeight + 150 ],
-		},
-		imageType: 'image/jpeg',
-		output: document.title + '.pdf',
+		html2PDF( body, {
+			html2canvas: {
+				scale: 1,
+				foreignObjectRendering: true,
+				scrollX: 0,
+				scrollY: -window.scrollY,
+			},
+			jsPDF: {
+				orientation: 'landscape',
+				// format: 'letter',
+				format: [ body.offsetWidth, body.offsetHeight + 150 ],
+			},
+			imageType: 'image/jpeg',
+			output: title + '-' + timestamp + '.pdf',
+		} );
+	} );
+
+// click on #deck-reset button
+document.getElementById( 'deck-reset' ).addEventListener( 'click', () => {
+	const deckCardInputsChecked = document.querySelectorAll(
+		"input[data-checked='true']"
+	);
+
+	deckCardInputsChecked.forEach( ( inputElement ) => {
+		inputElement.click();
+		// inputElement.dispatchEvent( new Event( 'change' ) );
+		// inputElement.checked = false;
+		// inputElement.setAttribute( 'data-checked', 'false' );
 	} );
 } );
