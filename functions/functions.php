@@ -18,3 +18,4 @@
 function sd_get_settings() {
 	return apply_filters( 'sd_get_settings', get_option( SD_TEXTDOMAIN . '-settings' ) );
 }
+

@@ -62,6 +62,7 @@ if ( version_compare( PHP_VERSION, SD_MIN_PHP_VERSION, '<=' ) ) {
 $strategy_deck_libraries = require SD_PLUGIN_ROOT . 'vendor/autoload.php'; //phpcs:ignore
 
 require_once SD_PLUGIN_ROOT . 'functions/functions.php';
+require_once SD_PLUGIN_ROOT . 'filters/filters.php';
 require_once SD_PLUGIN_ROOT . 'functions/debug.php';
 
 $requirements = new Requirements(
