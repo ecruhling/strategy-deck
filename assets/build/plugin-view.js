@@ -10593,11 +10593,13 @@ document.getElementById('deck-print').addEventListener('click', event => {
 // click on #deck-reset button
 document.getElementById('deck-reset').addEventListener('click', () => {
   const deckCardInputsChecked = document.querySelectorAll("input[data-checked='true']");
-  deckCardInputsChecked.forEach(inputElement => {
-    inputElement.click();
-    // inputElement.dispatchEvent( new Event( 'change' ) );
-    // inputElement.checked = false;
-    // inputElement.setAttribute( 'data-checked', 'false' );
+
+  // generate clicks on each card that is checked
+  deckCardInputsChecked.forEach((inputElement, index) => {
+    // add timeout function to slow down rate of clicks
+    setTimeout(function () {
+      inputElement.click();
+    }, index * 150);
   });
 });
 })();
