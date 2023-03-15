@@ -57,6 +57,6 @@ document.getElementById( 'deck-reset' ).addEventListener( 'click', () => {
 		// add timeout function to slow down rate of clicks
 		setTimeout( function () {
 			inputElement.click();
-		}, index * 150 );
+		}, index * 300 );
 	} );
 } );
