@@ -25,5 +25,5 @@ function allowed_post_type_blocks( $allowed_block_types, $editor_context ) {
 		);
 	}
 
-	return $blocks;
+	return $allowed_block_types;
 }
