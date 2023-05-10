@@ -1,5 +1,6 @@
 import { useEffect, useState } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
+import { RichText } from '@wordpress/block-editor';
 
 const FrontendDeckCard = ( props ) => {
 	const { dataAttributes } = props;
@@ -49,6 +50,9 @@ const FrontendDeckCard = ( props ) => {
 			data: {
 				...attributes,
 				checked: ! checked,
+				// eslint-disable-next-line camelcase
+				block_id,
+				word,
 			},
 		} )
 			.then( ( success ) => {
@@ -89,13 +93,27 @@ const FrontendDeckCard = ( props ) => {
 					saveUpdates();
 				} }
 			/>
-			<label
+			{ /*<label*/ }
+			{ /*	className="form-check-label"*/ }
+			{ /*	htmlFor={ block_id + `-input` }*/ }
+			{ /*>*/ }
+			{ /*	{ word }*/ }
+			{ /*</label>*/ }
+			<RichText
 				className="form-check-label"
 				/* eslint-disable-next-line camelcase */
 				htmlFor={ block_id + `-input` }
-			>
-				{ word }
-			</label>
+				tagName="label"
+				value={ word }
+				onChange={ ( value ) =>
+					setAttributes( { ...attributes, word: value } )
+				}
+				// style={
+				// 	isSelected
+				// 		? { border: '1px dashed black' }
+				// 		: { border: 'none' }
+				// }
+			/>
 			{ null !== notice && (
 				<span
 					className={ `notice ${ notice.type }` }
