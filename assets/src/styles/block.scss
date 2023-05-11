@@ -3,154 +3,159 @@
 
 // Admin & Block
 body.post-type-deck {
-  .editor-styles-wrapper {
-	.wp-block-post-content {
-	  display: flex;
-	  flex-wrap: wrap;
-	  margin-left: -0.4rem;
-	  margin-right: -0.4rem;
-	  margin-top: 0;
-	  height: 55vh;
-	  justify-content: center;
-	  align-items: center;
+	.editor-styles-wrapper {
+		.wp-block-post-content {
+			display: flex;
+			flex-wrap: wrap;
+			margin-left: -0.4rem;
+			margin-right: -0.4rem;
+			margin-top: 0;
+			height: 55vh;
+			justify-content: center;
+			align-items: center;
 
-	  .wp-block-strategydeck-deck-card {
-	  }
+			.wp-block-strategydeck-deck-card {
+			}
+		}
 	}
-  }
 }
 
 // Frontend only
 #deck-form {
-  .wp-block-strategydeck-deck-card {
-	label {
-	  //pointer-events: none;
+	.wp-block-strategydeck-deck-card {
+		label {
+			width: 100%;
+			text-align: center;
+			z-index: 10;
+		}
 	}
-  }
 }
 
 // block
 .wp-block-strategydeck-deck-card {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  height: 10vw;
-  min-height: 70px;
-  max-height: 115px;
-  max-width: 205px !important;
-  margin: 0 0.5rem 1rem;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem;
+	height: 10vw;
+	min-height: 70px;
+	max-height: 115px;
+	max-width: 205px !important;
+	margin: 0 0.5rem 1rem;
 
-  label {
-	transition: all 0.25s ease-in-out;
-	display: inline-block;
-	color: #b1a57e;
-	margin-bottom: 0 !important;
-	padding: 3px 5px;
-	line-height: 1;
-	font-family: "Domaine Display Regular", sans-serif;
-	font-size: 1.375rem;
-	z-index: 20;
-  }
-
-  input {
-	transition: all 0.25s ease-in-out;
-	background-color: #fff9f1;
-	appearance: none;
-	border: solid 2px #b1a57e;
-	border-radius: 2px;
-	position: absolute;
-	inset: 0;
-	width: 100%;
-	height: 100%;
-	display: block;
-	z-index: 10;
-
-	&::before {
-	  display: none !important;
+	label {
+		transition: all 0.25s ease-in-out;
+		display: inline-block;
+		color: #b1a57e;
+		margin-bottom: 0 !important;
+		padding: 3px 5px;
+		line-height: 1;
+		font-family: "Domaine Display Regular", sans-serif;
+		font-size: 1.375rem;
+		z-index: 20;
 	}
 
-	&:hover,
-	&:checked {
-	  border-color: #3e5e6f;
-	  cursor: pointer;
+	input {
+		transition: all 0.25s ease-in-out;
+		background-color: #fff9f1;
+		appearance: none;
+		border: solid 2px #b1a57e;
+		border-radius: 2px;
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		display: block;
+		z-index: 10;
 
-	  + label {
-		color: #3e5e6f !important;
-	  }
+		&::before {
+			display: none !important;
+		}
+
+		&:hover,
+		&:checked {
+			border-color: #3e5e6f;
+			cursor: pointer;
+
+			+ label {
+				color: #3e5e6f !important;
+			}
+		}
+
+		&:checked {
+			background-color: #3e5e6f;
+
+			+ label {
+				color: #fff9f1 !important;
+				font-style: italic;
+			}
+		}
 	}
 
-	&:checked {
-	  background-color: #3e5e6f;
-
-	  + label {
-		color: #fff9f1 !important;
-		font-style: italic;
-	  }
+	span.notice {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translateX(-50%) translateY(-50%);
+		z-index: 25;
 	}
-  }
 
-  span.notice {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translateX(-50%) translateY(-50%);
-	z-index: 25;
-  }
-
-  @media (min-width: 768px) {
-	flex: 0 0 auto;
-	width: 16.6667% !important;
-  }
+	@media (min-width: 768px) {
+		flex: 0 0 auto;
+		width: 16.6667% !important;
+	}
 }
 
-$spinnerSize: 20;
+$spinnerSize: 40;
 
 svg.spinner {
-  width: $spinnerSize + px;
-  height: $spinnerSize + px;
-  x: 0px;
-  y: 0px;
-  viewBox: 0 0 $spinnerSize $spinnerSize;
+	z-index: 20;
+	width: $spinnerSize + px;
+	height: $spinnerSize + px;
+	x: 0px;
+	y: 0px;
+	viewBox: 0 0 $spinnerSize $spinnerSize;
 
-  circle {
-	fill: transparent;
-	stroke: rgba(176, 189, 197, 0.75);
-	stroke-width: 3;
-	stroke-linecap: round;
-	stroke-dasharray: (3.14 * $spinnerSize);
-	transform-origin: (0.5px * $spinnerSize) (0.5px * $spinnerSize) 0;
-	animation: spinner 1.5s linear infinite;
-  }
+	circle {
+		fill: transparent;
+		stroke: rgba(176, 189, 197, 0.75);
+		stroke-width: 4;
+		stroke-linecap: round;
+		stroke-dasharray: (3.14 * $spinnerSize);
+		transform-origin: (0.5px * $spinnerSize) (0.5px * $spinnerSize) 0;
+		animation: spinner 1.5s linear infinite;
+	}
 }
 
 @keyframes spinner {
-  0% {
-	transform: rotate(0deg);
-	stroke-dashoffset: (0.66 * $spinnerSize);
-  }
-  50% {
-	transform: rotate(720deg);
-	stroke-dashoffset: (3.14 * $spinnerSize);
-  }
-  100% {
-	transform: rotate(1080deg);
-	stroke-dashoffset: (0.66 * $spinnerSize);
-  }
+	0% {
+		transform: rotate(0deg);
+		stroke-dashoffset: (0.66 * $spinnerSize);
+	}
+
+	50% {
+		transform: rotate(720deg);
+		stroke-dashoffset: (3.14 * $spinnerSize);
+	}
+
+	100% {
+		transform: rotate(1080deg);
+		stroke-dashoffset: (0.66 * $spinnerSize);
+	}
 }
 
 @function escape-svg($string) {
-  @if str-index($string, "data:image/svg+xml") {
-	@each $char, $encoded in $escaped-characters {
-	  // Do not escape the url brackets
-	  @if str-index($string, "url(") == 1 {
-		$string: url("#{str-replace(str-slice($string, 6, -3), $char, $encoded)}");
-	  } @else {
-		$string: str-replace($string, $char, $encoded);
-	  }
+	@if str-index($string, "data:image/svg+xml") {
+		@each $char, $encoded in $escaped-characters {
+			// Do not escape the url brackets
+			@if str-index($string, "url(") == 1 {
+				$string: url("#{str-replace(str-slice($string, 6, -3), $char, $encoded)}");
+			} @else {
+				$string: str-replace($string, $char, $encoded);
+			}
+		}
 	}
-  }
 
-  @return $string;
+	@return $string;
 }

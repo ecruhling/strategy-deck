@@ -117,20 +117,15 @@ const FrontendDeckCard = props => {
       ...attributes,
       word: value
     })
-    // style={
-    // 	isSelected
-    // 		? { border: '1px dashed black' }
-    // 		: { border: 'none' }
-    // }
   }), null !== notice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: `notice ${notice.type}`,
     role: 'error' === notice.type ? 'alert' : 'status'
   }, notice.message, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     className: "spinner"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("circle", {
-    cx: "10",
-    cy: "10",
-    r: "7"
+    cx: "20",
+    cy: "20",
+    r: "10"
   }))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FrontendDeckCard);

@@ -93,12 +93,6 @@ const FrontendDeckCard = ( props ) => {
 					saveUpdates();
 				} }
 			/>
-			{ /*<label*/ }
-			{ /*	className="form-check-label"*/ }
-			{ /*	htmlFor={ block_id + `-input` }*/ }
-			{ /*>*/ }
-			{ /*	{ word }*/ }
-			{ /*</label>*/ }
 			<RichText
 				className="form-check-label"
 				/* eslint-disable-next-line camelcase */
@@ -108,11 +102,6 @@ const FrontendDeckCard = ( props ) => {
 				onChange={ ( value ) =>
 					setAttributes( { ...attributes, word: value } )
 				}
-				// style={
-				// 	isSelected
-				// 		? { border: '1px dashed black' }
-				// 		: { border: 'none' }
-				// }
 			/>
 			{ null !== notice && (
 				<span
@@ -121,7 +110,7 @@ const FrontendDeckCard = ( props ) => {
 				>
 					{ notice.message }
 					<svg className="spinner">
-						<circle cx="10" cy="10" r="7"></circle>
+						<circle cx="20" cy="20" r="10"></circle>
 					</svg>
 				</span>
 			) }
