@@ -29,16 +29,16 @@ class Cron extends Base {
 		 * Load CronPlus
 		 */
 		$args = array(
-			'recurrence'       => 'hourly',
+			'recurrence'       => 'weekly',
 			'schedule'         => 'schedule',
-			'name'             => 'hourly_cron',
-			'cb'               => array( $this, 'hourly_cron' ),
+			'name'             => 'weekly_cron',
+			'cb'               => array( $this, 'weekly_cron' ),
 			'plugin_root_file' => 'strategydeck.php',
 		);
 
-		$cronplus = new \CronPlus( $args );
+//		$cronplus = new \CronPlus( $args );
 		// Schedule the event
-		$cronplus->schedule_event();
+//		$cronplus->schedule_event();
 		// Remove the event by the schedule
 		// $cronplus->clear_schedule_by_hook();
 		// Jump the scheduled event
@@ -52,7 +52,7 @@ class Cron extends Base {
 	 * @param int $id The ID.
 	 * @return void
 	 */
-	public function hourly_cron( int $id ) {
+	public function weekly_cron( int $id ) {
 		echo \esc_html( (string) $id );
 	}
 
