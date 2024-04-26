@@ -27,6 +27,11 @@ body.post-type-deck {
 			width: 100%;
 			text-align: center;
 			z-index: 10;
+			white-space: normal !important;
+
+			br {
+				display: none !important;
+			}
 		}
 	}
 }
