@@ -12,17 +12,20 @@
 /**
  * Restrict the 'deck' post type to only use the Deck Card block.
  *
- * @since 1.0.0
  * @return array
+ * @since 1.0.0
  */
 
-add_filter( 'allowed_block_types_all', 'allowed_post_type_blocks', 10, 2 );
+add_filter('allowed_block_types_all', 'allowed_post_type_blocks', 10, 2);
 
-function allowed_post_type_blocks( $allowed_block_types, $editor_context ) {
-	if ( 'deck' === $editor_context->post->post_type ) {
-		return array(
-			'strategydeck/deck-card',
-		);
+function allowed_post_type_blocks($allowed_block_types, $editor_context)
+{
+	if (isset($editor_context->post->post_type)) {
+		if ('deck' === $editor_context->post->post_type) {
+			return array(
+				'strategydeck/deck-card',
+			);
+		}
 	}
 
 	return $allowed_block_types;
